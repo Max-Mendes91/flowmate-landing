@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BackgroundLines from "@/components/BackgroundLines";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,7 +37,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-gradient-to-b from-[#0A0A0B] via-[#0B0B0D] to-[#050506] text-text-primary antialiased font-sans min-h-screen">
+      <body className="bg-gradient-to-b from-[#0A0A0B] via-[#0B0B0D] to-[#050506] text-text-primary antialiased font-sans min-h-screen relative">
+        <BackgroundLines />
         {children}
       </body>
     </html>
