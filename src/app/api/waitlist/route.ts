@@ -8,9 +8,9 @@ export async function POST(request: NextRequest) {
   try {
     // Initialize Supabase client at runtime
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
 
-    if (!supabaseUrl || !supabaseServiceKey) {
+    if (!supabaseUrl || !supabaseSecretKey) {
       console.error("Missing Supabase environment variables");
       return NextResponse.json(
         { error: "Server configuration error" },
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(supabaseUrl, supabaseSecretKey);
 
     const body = await request.json();
     const { email, utmCampaign, userAgent } = body;
