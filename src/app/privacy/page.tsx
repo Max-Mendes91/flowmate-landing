@@ -12,13 +12,13 @@ export default function PrivacyPage() {
       <div className="container mx-auto px-4 py-20 max-w-3xl">
         <Link
           href="/"
-          className="text-brand-accent hover:text-brand-accentHover transition mb-8 inline-block"
+          className="text-brand-500 hover:text-brand-400 transition mb-8 inline-block"
         >
           ← Back to home
         </Link>
         <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
         <div className="prose prose-neutral max-w-none">
-          <p className="text-neutral-600 mb-4">
+          <p className="text-neutral-500 mb-4">
             Last updated: {new Date().toLocaleDateString()}
           </p>
           <p className="mb-4">
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
             For questions, contact us at{" "}
             <a
               href="mailto:privacy@flowmate.com"
-              className="text-brand-accent hover:underline"
+              className="text-brand-500 hover:underline"
             >
               privacy@flowmate.com
             </a>
