@@ -15,7 +15,7 @@ export default function WaitlistModal({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState("");
 
   // Close on Escape key
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function WaitlistModal({
     if (isOpen) {
       setEmail("");
       setError("");
-      setSuccess(false);
+      setSuccess("");
       setIsSubmitting(false);
     }
   }, [isOpen]);
@@ -60,13 +60,23 @@ export default function WaitlistModal({
 
       const data = await response.json();
 
+      // Handle duplicate email as success
+      if (response.status === 409) {
+        setSuccess("You're already on the waitlist!");
+        setError("");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Handle other errors
       if (!response.ok) {
         setError(data.error || "Something went wrong");
         setIsSubmitting(false);
         return;
       }
 
-      setSuccess(true);
+      // Success - new signup
+      setSuccess("You're on the list!");
       setIsSubmitting(false);
     } catch (err) {
       setError("Network error. Please try again.");
@@ -210,11 +220,12 @@ export default function WaitlistModal({
                     </div>
 
                     <h3 className="text-2xl font-bold text-text-primary mb-2">
-                      You&apos;re on the list!
+                      {success}
                     </h3>
                     <p className="text-text-secondary mb-8">
-                      We&apos;ll send you an email when FlowMate launches.
-                      Check your inbox for confirmation.
+                      {success === "You're already on the waitlist!"
+                        ? "We have your email and will notify you when FlowMate launches."
+                        : "We'll send you an email when FlowMate launches. Check your inbox for confirmation."}
                     </p>
 
                     <button
