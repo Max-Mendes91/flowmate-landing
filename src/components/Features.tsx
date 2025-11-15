@@ -69,14 +69,14 @@ const cardVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 md:py-32">
+    <section id="features" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.45 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16"
+          className="text-4xl md:text-5xl font-bold text-center mb-16 text-text-primary"
         >
           How FlowMate works
         </motion.h2>
@@ -90,15 +90,16 @@ export default function Features() {
               viewport={{ once: true, margin: "-100px" }}
               variants={cardVariants}
               transition={{ duration: 0.45, delay: index * 0.1 }}
-              className="group relative rounded-2xl border border-neutral-200 p-8 bg-white shadow-sm hover:shadow-md transition-shadow"
+              whileHover={{ y: -8 }}
+              className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 mb-5">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-brand-900">
+              <h3 className="text-xl font-semibold mb-3 text-text-primary">
                 {feature.title}
               </h3>
-              <p className="text-neutral-500 leading-relaxed">{feature.desc}</p>
+              <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
         </div>
