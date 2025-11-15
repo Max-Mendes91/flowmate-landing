@@ -21,9 +21,11 @@ export default function CTA() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <motion.button
+              type="button"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center justify-center font-medium px-10 py-4 text-base bg-white/5 hover:bg-white/10 border border-gold-border hover:border-gold-hover text-white rounded-xl shadow-gold-glow transition-all duration-300"
+              aria-label="Join the FlowMate waitlist"
             >
               Join the waitlist
             </motion.button>
@@ -31,6 +33,7 @@ export default function CTA() {
               href="#features"
               whileHover={{ scale: 1.02 }}
               className="inline-flex items-center justify-center font-medium px-10 py-4 text-base text-text-secondary border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300"
+              aria-label="Learn more about FlowMate"
             >
               Learn more
             </motion.a>

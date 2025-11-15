@@ -13,6 +13,8 @@ const features = [
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
+        aria-label="Email icon"
+        role="img"
       >
         <path
           strokeLinecap="round"
@@ -32,6 +34,8 @@ const features = [
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
+        aria-label="Calendar icon"
+        role="img"
       >
         <path
           strokeLinecap="round"
@@ -51,6 +55,8 @@ const features = [
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
+        aria-label="Chat icon"
+        role="img"
       >
         <path
           strokeLinecap="round"
