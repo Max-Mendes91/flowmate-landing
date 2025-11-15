@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BackgroundLines from "@/components/BackgroundLines";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
       </head>
       <body className="bg-gradient-to-b from-[#0A0A0B] via-[#0B0B0D] to-[#050506] text-text-primary antialiased font-sans min-h-screen relative">
         <BackgroundLines />
+        <Navbar />
         {children}
       </body>
     </html>
