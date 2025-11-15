@@ -46,7 +46,7 @@ export default function Hero() {
           animate="visible"
           variants={fadeUp}
           transition={{ duration: 0.45 }}
-          className="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight text-text-primary"
+          className="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight bg-gradient-to-r from-white via-gold/60 to-gold bg-clip-text text-transparent"
         >
           AI that sends emails, schedules meetings, and updates Slack — all
           from one prompt.
