@@ -20,7 +20,7 @@ export default function Hero() {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -20]);
 
   return (
-    <section ref={ref} className="relative py-32 md:py-48 overflow-hidden">
+    <section ref={ref} className="relative pt-48 md:pt-56 pb-32 md:pb-48 overflow-hidden">
       {/* Parallax Gradient Layers */}
       <div className="absolute inset-0 -z-10">
         {/* Layer 1: Blue accent */}
