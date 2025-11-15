@@ -11,10 +11,11 @@ export default function Header() {
       <Link href="/" className="flex items-center">
         <Image
           src="/logo-symbol.png"
-          width={32}
-          height={32}
+          width={42}
+          height={42}
           alt="FlowMate Logo"
-          className="rounded-sm"
+          className="rounded-full shadow"
+          priority
         />
       </Link>
 
@@ -23,12 +24,24 @@ export default function Header() {
         <Navbar />
       </div>
 
-      {/* Right: CTA Button */}
+      {/* Right: CTA Pill */}
       <Link
-        href="/sign-up"
-        className="bg-gold text-black font-medium px-5 py-2 rounded-full hover:bg-gold/80 transition-colors shadow"
+        href="/join"
+        className="
+          px-5 py-2.5
+          rounded-full
+          font-medium
+          text-gold
+          border border-gold/40
+          bg-white/5
+          backdrop-blur-xl
+          shadow-lg
+          hover:bg-white/10
+          hover:border-gold/60
+          transition-all
+        "
       >
-        Get Started
+        Join Waitlist
       </Link>
     </header>
   );
