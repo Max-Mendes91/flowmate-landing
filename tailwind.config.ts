@@ -9,17 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          900: "#0A0A0A",
-          500: "#4F46E5",
-          400: "#7C70FF",
+        dark: {
+          primary: "#050506",
+          secondary: "#0B0B0D",
+          tertiary: "#111113",
+          gradient: {
+            1: "#0A0A0B",
+            2: "#0B0B0D",
+            3: "#050506",
+          },
         },
-        neutral: {
-          50: "#FAFAFA",
-          100: "#F4F4F5",
-          200: "#E6E6E7",
-          300: "#D4D4D8",
-          500: "#73737A",
+        text: {
+          primary: "#FFFFFF",
+          secondary: "rgba(255,255,255,0.75)",
+          muted: "rgba(255,255,255,0.50)",
+        },
+        accent: {
+          blue: "#4D9FFF",
+          lavender: "#B39CFF",
+        },
+        gold: {
+          DEFAULT: "#E4CFA3",
+          soft: "rgba(228,207,163,0.55)",
+          border: "rgba(228,207,163,0.35)",
+          hover: "rgba(228,207,163,0.70)",
+          glow: "rgba(228,207,163,0.18)",
         },
       },
       fontFamily: {
@@ -47,6 +61,11 @@ const config: Config = {
       boxShadow: {
         sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
         md: "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04)",
+        "gold-glow": "0 0 20px rgba(228,207,163,0.18)",
+        "blue-glow": "0 0 20px rgba(77,159,255,0.25)",
+      },
+      backgroundImage: {
+        "gradient-dark": "linear-gradient(to bottom, #0A0A0B, #0B0B0D, #050506)",
       },
       container: {
         center: true,
