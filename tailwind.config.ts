@@ -10,28 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary: "#0A0A0A",
-          accent: "#5B4BFF",
-          accentHover: "#4A3CE6",
-          accentLight: "#ECEAFF",
+          900: "#0A0A0A",
+          500: "#4F46E5",
+          400: "#7C70FF",
         },
         neutral: {
           50: "#FAFAFA",
-          100: "#F5F5F5",
-          200: "#E5E5E5",
-          300: "#D4D4D4",
-          400: "#A3A3A3",
-          500: "#737373",
-          600: "#525252",
-          700: "#404040",
-          800: "#262626",
-          900: "#171717",
+          100: "#F4F4F5",
+          200: "#E6E6E7",
+          300: "#D4D4D8",
+          500: "#73737A",
         },
-        semantic: {
-          success: "#16A34A",
-          warning: "#D97706",
-          error: "#DC2626",
-        },
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
       },
       fontSize: {
         xs: "0.75rem",
@@ -43,6 +35,7 @@ const config: Config = {
         "3xl": "1.875rem",
         "4xl": "2.25rem",
         "5xl": "3rem",
+        "6xl": "3.75rem",
       },
       borderRadius: {
         sm: "6px",
@@ -51,19 +44,9 @@ const config: Config = {
         xl: "20px",
         "2xl": "28px",
       },
-      spacing: {
-        1: "4px",
-        2: "8px",
-        3: "12px",
-        4: "16px",
-        6: "24px",
-        8: "32px",
-        10: "40px",
-        12: "48px",
-      },
       boxShadow: {
-        card: "0 4px 14px rgba(0,0,0,0.08)",
-        floating: "0 10px 38px rgba(0,0,0,0.12)",
+        sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        md: "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04)",
       },
       container: {
         center: true,

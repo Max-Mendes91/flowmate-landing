@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-white text-brand-primary antialiased;
+  html {
+    @apply scroll-smooth;
+  }
+
+  * {
+    @apply border-neutral-200;
   }
 }
