@@ -98,23 +98,23 @@ export default function WaitlistModal({
           />
 
           {/* Modal Container - Full screen flex center */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none">
+          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6 pointer-events-none overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2 }}
-              className="w-full max-w-md pointer-events-auto"
+              className="w-full max-w-md pointer-events-auto my-auto"
             >
-              <div className="relative rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-8">
-              {/* Close Button */}
+              <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-6 sm:p-8">
+              {/* Close Button - More prominent on mobile */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
                 aria-label="Close modal"
               >
                 <svg
-                  className="w-5 h-5 text-text-muted"
+                  className="w-6 h-6 sm:w-5 sm:h-5 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -131,9 +131,9 @@ export default function WaitlistModal({
               {!success ? (
                 <>
                   {/* Icon */}
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-4 sm:mb-6">
                     <svg
-                      className="w-8 h-8 text-gold"
+                      className="w-7 h-7 sm:w-8 sm:h-8 text-gold"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -148,10 +148,10 @@ export default function WaitlistModal({
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-text-primary mb-2 text-center">
+                  <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-2 text-center">
                     Join the Waitlist
                   </h3>
-                  <p className="text-text-secondary mb-8 text-center">
+                  <p className="text-sm sm:text-base text-text-secondary mb-6 sm:mb-8 text-center">
                     Be the first to experience FlowMate when we launch.
                   </p>
 
@@ -204,9 +204,9 @@ export default function WaitlistModal({
                     className="text-center"
                   >
                     {/* Success Icon */}
-                    <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4 sm:mb-6">
                       <svg
-                        className="w-10 h-10 text-gold"
+                        className="w-8 h-8 sm:w-10 sm:h-10 text-gold"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -220,10 +220,10 @@ export default function WaitlistModal({
                       </svg>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-text-primary mb-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-2">
                       {success}
                     </h3>
-                    <p className="text-text-secondary mb-8">
+                    <p className="text-sm sm:text-base text-text-secondary mb-6 sm:mb-8">
                       {success === "You're already on the waitlist!"
                         ? "We have your email and will notify you when FlowMate launches."
                         : "We'll send you an email when FlowMate launches. Check your inbox for confirmation."}
@@ -231,7 +231,7 @@ export default function WaitlistModal({
 
                     <button
                       onClick={onClose}
-                      className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-text-primary font-medium hover:bg-white/10 transition-all"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-text-primary font-medium hover:bg-white/10 transition-all"
                     >
                       Close
                     </button>
