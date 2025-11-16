@@ -11,6 +11,7 @@ interface ContactModalProps {
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const email = "hello@flowmate.com";
   const [showCopied, setShowCopied] = useState(false);
+  const [showOpening, setShowOpening] = useState(false);
 
   // Close on Escape key
   useEffect(() => {
@@ -23,10 +24,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   }, [isOpen, onClose]);
 
-  // Reset copied state when modal closes
+  // Reset states when modal closes
   useEffect(() => {
     if (!isOpen) {
       setShowCopied(false);
+      setShowOpening(false);
     }
   }, [isOpen]);
 
@@ -46,7 +48,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const openDefaultEmail = () => {
-    window.location.href = `mailto:${email}`;
+    setShowOpening(true);
+    // Small delay to show feedback before attempting to open
+    setTimeout(() => {
+      window.location.href = `mailto:${email}`;
+      // Reset after a moment
+      setTimeout(() => setShowOpening(false), 2000);
+    }, 100);
   };
 
   return (
@@ -138,9 +146,39 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     {/* Open in Default Email */}
                     <button
                       onClick={openDefaultEmail}
-                      className="w-full px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border border-white/10 text-text-primary text-xs sm:text-base font-medium hover:bg-white/10 transition-all"
+                      disabled={showOpening}
+                      className={`w-full px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border text-xs sm:text-base font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
+                        showOpening
+                          ? "bg-gold/10 border-gold/30 text-gold"
+                          : "bg-white/5 border-white/10 text-text-primary hover:bg-white/10"
+                      }`}
                     >
-                      Open in Email App
+                      {showOpening ? (
+                        <>
+                          <svg
+                            className="w-3.5 h-3.5 sm:w-5 sm:h-5 animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            />
+                          </svg>
+                          Opening...
+                        </>
+                      ) : (
+                        "Open in Email App"
+                      )}
                     </button>
 
                     {/* Copy to Clipboard */}
