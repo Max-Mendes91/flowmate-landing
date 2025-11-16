@@ -38,8 +38,27 @@ export default function WaitlistModal({
     }
   }, [isOpen]);
 
+  const validateEmail = (email: string) => {
+    if (!email.trim()) {
+      return "Please enter your email address";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return "Please enter a valid email address";
+    }
+    return "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Custom validation
+    const validationError = validateEmail(email);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setError("");
     setIsSubmitting(true);
 
@@ -156,16 +175,20 @@ export default function WaitlistModal({
                   </p>
 
                   {/* Form */}
-                  <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
                     <div>
                       <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (error) setError(""); // Clear error when typing
+                        }}
                         placeholder="Enter your email"
-                        required
                         disabled={isSubmitting}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border border-white/10 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50 text-sm sm:text-base"
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border text-text-primary placeholder:text-text-muted focus:outline-none transition-colors disabled:opacity-50 text-sm sm:text-base ${
+                          error ? "border-red-500/50 focus:border-red-500/70" : "border-white/10 focus:border-gold/40"
+                        }`}
                       />
                     </div>
 
