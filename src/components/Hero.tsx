@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import WaitlistModal from "./WaitlistModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -10,6 +11,7 @@ const fadeUp = {
 
 export default function Hero() {
   const ref = useRef(null);
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -72,6 +74,7 @@ export default function Hero() {
         >
           <motion.button
             type="button"
+            onClick={() => setIsWaitlistOpen(true)}
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center justify-center font-medium px-10 py-4 text-base bg-white/5 hover:bg-white/10 border border-gold-border hover:border-gold-hover text-white rounded-xl shadow-gold-glow transition-all duration-300"
@@ -89,6 +92,12 @@ export default function Hero() {
           </motion.a>
         </motion.div>
       </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+      />
     </section>
   );
 }
