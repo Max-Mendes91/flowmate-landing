@@ -120,13 +120,13 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-20 left-4 right-4 z-[70] lg:hidden"
+              className="fixed top-16 left-4 right-4 z-[70] lg:hidden max-h-[calc(100vh-5rem)] overflow-y-auto"
             >
-              <div className="rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-6">
+              <div className="rounded-2xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-4">
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
                   aria-label="Close menu"
                 >
                   <svg
@@ -145,13 +145,13 @@ export default function Header() {
                 </button>
 
                 {/* Nav Links */}
-                <nav className="flex flex-col gap-4 pt-4">
+                <nav className="grid grid-cols-2 gap-x-4 gap-y-1 pt-6">
                   {navLinks.map((link) => (
                     <a
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg text-white/90 hover:text-gold transition-colors py-2"
+                      className="text-sm text-white/90 hover:text-gold transition-colors py-1.5"
                     >
                       {link.label}
                     </a>
@@ -164,7 +164,7 @@ export default function Header() {
                     setIsMobileMenuOpen(false);
                     setIsWaitlistOpen(true);
                   }}
-                  className="mt-6 w-full px-5 py-3 rounded-xl font-medium text-gold border border-gold/40 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-gold/60 transition-all"
+                  className="mt-4 w-full px-4 py-2 rounded-xl font-medium text-gold border border-gold/40 bg-white/5 backdrop-blur-xl hover:bg-white/10 hover:border-gold/60 transition-all text-sm"
                 >
                   Join Waitlist
                 </button>
