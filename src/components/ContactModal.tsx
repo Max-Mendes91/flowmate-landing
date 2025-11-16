@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactModalProps {
@@ -10,6 +10,8 @@ interface ContactModalProps {
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const email = "hello@flowmate.com";
+  const [showCopied, setShowCopied] = useState(false);
+  const [showOpening, setShowOpening] = useState(false);
 
   // Close on Escape key
   useEffect(() => {
@@ -22,11 +24,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   }, [isOpen, onClose]);
 
+  // Reset states when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setShowCopied(false);
+      setShowOpening(false);
+    }
+  }, [isOpen]);
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(email);
-      // Could add a toast notification here
-      alert("Email copied to clipboard!");
+      setShowCopied(true);
+      // Hide after 2 seconds
+      setTimeout(() => setShowCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -37,7 +48,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const openDefaultEmail = () => {
-    window.location.href = `mailto:${email}`;
+    setShowOpening(true);
+    // Small delay to show feedback before attempting to open
+    setTimeout(() => {
+      window.location.href = `mailto:${email}`;
+      // Reset after a moment
+      setTimeout(() => setShowOpening(false), 2000);
+    }, 100);
   };
 
   return (
@@ -50,45 +67,27 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-20 right-6 z-50 w-full max-w-md"
-          >
-            <div className="relative rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-8">
-              {/* Close Button */}
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
-                aria-label="Close modal"
-              >
-                <svg
-                  className="w-5 h-5 text-text-muted"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+          {/* Modal Container - Responsive positioning */}
+          <div className="fixed inset-0 z-[101] flex items-center justify-center p-3 sm:p-6 pointer-events-none overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="w-full max-w-sm sm:max-w-md pointer-events-auto my-auto max-h-[calc(100vh-1.5rem)] overflow-y-auto sm:ml-auto sm:mr-4 lg:mr-6"
+            >
+              <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-4 sm:p-6">
+                {/* Close Button */}
+                <button
+                  onClick={onClose}
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+                  aria-label="Close modal"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-
-              {/* Content */}
-              <div className="text-center">
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
                   <svg
-                    className="w-8 h-8 text-gold"
+                    className="w-5 h-5 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -97,49 +96,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
-                </div>
+                </button>
 
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-text-primary mb-2">
-                  Get in Touch
-                </h3>
-                <p className="text-text-secondary mb-8">
-                  We&apos;d love to hear from you. Choose how you&apos;d like to reach us:
-                </p>
-
-                {/* Email Display */}
-                <div className="mb-8 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <p className="text-gold font-medium">{email}</p>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="space-y-3">
-                  {/* Open in Gmail */}
-                  <button
-                    onClick={openGmail}
-                    className="w-full px-6 py-3 rounded-xl bg-gold text-black font-medium hover:bg-gold/90 transition-all"
-                  >
-                    Open in Gmail
-                  </button>
-
-                  {/* Open in Default Email */}
-                  <button
-                    onClick={openDefaultEmail}
-                    className="w-full px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-text-primary font-medium hover:bg-white/10 transition-all"
-                  >
-                    Open in Email App
-                  </button>
-
-                  {/* Copy to Clipboard */}
-                  <button
-                    onClick={copyToClipboard}
-                    className="w-full px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-text-secondary font-medium hover:bg-white/10 hover:text-text-primary transition-all flex items-center justify-center gap-2"
-                  >
+                {/* Content */}
+                <div className="text-center">
+                  {/* Icon - compact for landscape */}
+                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-5">
                     <svg
-                      className="w-5 h-5"
+                      className="w-5 h-5 sm:w-7 sm:h-7 text-gold"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -148,15 +115,122 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
                     </svg>
-                    Copy Email
-                  </button>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-base sm:text-xl font-bold text-text-primary mb-1">
+                    Get in Touch
+                  </h3>
+                  <p className="text-xs sm:text-base text-text-secondary mb-3 sm:mb-6">
+                    Choose how you&apos;d like to reach us:
+                  </p>
+
+                  {/* Email Display */}
+                  <div className="mb-3 sm:mb-6 p-2 sm:p-4 rounded-lg sm:rounded-xl bg-white/5 border border-white/10">
+                    <p className="text-xs sm:text-base text-gold font-medium break-all">{email}</p>
+                  </div>
+
+                  {/* Action Buttons - Grid for landscape */}
+                  <div className="grid grid-cols-1 sm:grid-cols-1 gap-2 sm:space-y-0">
+                    {/* Open in Gmail */}
+                    <button
+                      onClick={openGmail}
+                      className="w-full px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl bg-gold text-black text-xs sm:text-base font-medium hover:bg-gold/90 transition-all"
+                    >
+                      Open in Gmail
+                    </button>
+
+                    {/* Open in Default Email */}
+                    <button
+                      onClick={openDefaultEmail}
+                      disabled={showOpening}
+                      className={`w-full px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border text-xs sm:text-base font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
+                        showOpening
+                          ? "bg-gold/10 border-gold/30 text-gold"
+                          : "bg-white/5 border-white/10 text-text-primary hover:bg-white/10"
+                      }`}
+                    >
+                      {showOpening ? (
+                        <>
+                          <svg
+                            className="w-3.5 h-3.5 sm:w-5 sm:h-5 animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            />
+                          </svg>
+                          Opening...
+                        </>
+                      ) : (
+                        "Open in Email App"
+                      )}
+                    </button>
+
+                    {/* Copy to Clipboard */}
+                    <button
+                      onClick={copyToClipboard}
+                      className={`w-full px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border text-xs sm:text-base font-medium transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
+                        showCopied
+                          ? "bg-green-500/20 border-green-500/30 text-green-400"
+                          : "bg-white/5 border-white/10 text-text-secondary hover:bg-white/10 hover:text-text-primary"
+                      }`}
+                    >
+                      {showCopied ? (
+                        <>
+                          <svg
+                            className="w-3.5 h-3.5 sm:w-5 sm:h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <svg
+                            className="w-3.5 h-3.5 sm:w-5 sm:h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                            />
+                          </svg>
+                          Copy Email
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>

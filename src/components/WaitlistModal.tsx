@@ -38,8 +38,27 @@ export default function WaitlistModal({
     }
   }, [isOpen]);
 
+  const validateEmail = (email: string) => {
+    if (!email.trim()) {
+      return "Please enter your email address";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return "Please enter a valid email address";
+    }
+    return "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Custom validation
+    const validationError = validateEmail(email);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setError("");
     setIsSubmitting(true);
 
@@ -94,26 +113,27 @@ export default function WaitlistModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4"
-          >
-            <div className="relative rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-8">
-              {/* Close Button */}
+          {/* Modal Container - Full screen flex center */}
+          <div className="fixed inset-0 z-[101] flex items-center justify-center p-3 sm:p-6 pointer-events-none overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="w-full max-w-md pointer-events-auto my-auto max-h-[calc(100vh-1.5rem)] overflow-y-auto"
+            >
+              <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-4 sm:p-8">
+              {/* Close Button - More prominent on mobile */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
                 aria-label="Close modal"
               >
                 <svg
-                  className="w-5 h-5 text-text-muted"
+                  className="w-5 h-5 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -129,10 +149,10 @@ export default function WaitlistModal({
 
               {!success ? (
                 <>
-                  {/* Icon */}
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                  {/* Icon - smaller for compact view */}
+                  <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-3 sm:mb-6">
                     <svg
-                      className="w-8 h-8 text-gold"
+                      className="w-5 h-5 sm:w-8 sm:h-8 text-gold"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -147,24 +167,28 @@ export default function WaitlistModal({
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-text-primary mb-2 text-center">
+                  <h3 className="text-lg sm:text-2xl font-bold text-text-primary mb-1 sm:mb-2 text-center">
                     Join the Waitlist
                   </h3>
-                  <p className="text-text-secondary mb-8 text-center">
+                  <p className="text-xs sm:text-base text-text-secondary mb-4 sm:mb-8 text-center">
                     Be the first to experience FlowMate when we launch.
                   </p>
 
                   {/* Form */}
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
                     <div>
                       <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (error) setError(""); // Clear error when typing
+                        }}
                         placeholder="Enter your email"
-                        required
                         disabled={isSubmitting}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-text-primary placeholder:text-text-muted focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border text-text-primary placeholder:text-text-muted focus:outline-none transition-colors disabled:opacity-50 text-sm sm:text-base ${
+                          error ? "border-red-500/50 focus:border-red-500/70" : "border-white/10 focus:border-gold/40"
+                        }`}
                       />
                     </div>
 
@@ -173,9 +197,9 @@ export default function WaitlistModal({
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="p-3 rounded-xl bg-red-500/10 border border-red-500/20"
+                        className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-red-500/10 border border-red-500/20"
                       >
-                        <p className="text-sm text-red-400">{error}</p>
+                        <p className="text-xs sm:text-sm text-red-400">{error}</p>
                       </motion.div>
                     )}
 
@@ -183,13 +207,13 @@ export default function WaitlistModal({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full px-6 py-3 rounded-xl bg-gold text-black font-medium hover:bg-gold/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-gold text-black font-medium hover:bg-gold/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {isSubmitting ? "Joining..." : "Join Waitlist"}
                     </button>
                   </form>
 
-                  <p className="text-xs text-text-muted text-center mt-4">
+                  <p className="text-[10px] sm:text-xs text-text-muted text-center mt-3 sm:mt-4">
                     We&apos;ll never share your email with anyone else.
                   </p>
                 </>
@@ -203,9 +227,9 @@ export default function WaitlistModal({
                     className="text-center"
                   >
                     {/* Success Icon */}
-                    <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-6">
+                    <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-3 sm:mb-6">
                       <svg
-                        className="w-10 h-10 text-gold"
+                        className="w-6 h-6 sm:w-10 sm:h-10 text-gold"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -219,10 +243,10 @@ export default function WaitlistModal({
                       </svg>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-text-primary mb-2">
+                    <h3 className="text-lg sm:text-2xl font-bold text-text-primary mb-1 sm:mb-2">
                       {success}
                     </h3>
-                    <p className="text-text-secondary mb-8">
+                    <p className="text-xs sm:text-base text-text-secondary mb-4 sm:mb-8">
                       {success === "You're already on the waitlist!"
                         ? "We have your email and will notify you when FlowMate launches."
                         : "We'll send you an email when FlowMate launches. Check your inbox for confirmation."}
@@ -230,7 +254,7 @@ export default function WaitlistModal({
 
                     <button
                       onClick={onClose}
-                      className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-text-primary font-medium hover:bg-white/10 transition-all"
+                      className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border border-white/10 text-text-primary font-medium hover:bg-white/10 transition-all text-sm sm:text-base"
                     >
                       Close
                     </button>
@@ -239,6 +263,7 @@ export default function WaitlistModal({
               )}
             </div>
           </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
