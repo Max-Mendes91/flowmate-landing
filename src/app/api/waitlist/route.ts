@@ -20,6 +20,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate URL format before creating client
+    if (!supabaseUrl.startsWith("https://") && !supabaseUrl.startsWith("http://")) {
+      console.error(
+        `Invalid NEXT_PUBLIC_SUPABASE_URL format: "${supabaseUrl}". Must start with https:// (e.g., https://yourproject.supabase.co)`
+      );
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
     const supabase = createClient(supabaseUrl, supabaseSecretKey);
 
     const body = await request.json();
