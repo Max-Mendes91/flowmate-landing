@@ -77,7 +77,21 @@ export default function WaitlistModal({
         }),
       });
 
-      const data = await response.json();
+      // Try to parse JSON response, with fallback for non-JSON responses
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        // Response is not valid JSON
+        if (response.status === 500) {
+          setError("Server configuration error. Please contact support.");
+          setIsSubmitting(false);
+          return;
+        }
+        setError("Unexpected server response. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
 
       // Handle duplicate email as success
       if (response.status === 409) {
@@ -89,7 +103,12 @@ export default function WaitlistModal({
 
       // Handle other errors
       if (!response.ok) {
-        setError(data.error || "Something went wrong");
+        // Provide more specific error messages
+        if (response.status === 500 && data.error === "Server configuration error") {
+          setError("Service temporarily unavailable. Please try again later.");
+        } else {
+          setError(data.error || "Something went wrong. Please try again.");
+        }
         setIsSubmitting(false);
         return;
       }
@@ -98,7 +117,8 @@ export default function WaitlistModal({
       setSuccess("You're on the list!");
       setIsSubmitting(false);
     } catch (err) {
-      setError("Network error. Please try again.");
+      // Network errors (no internet, server unreachable, etc.)
+      setError("Unable to connect. Please check your internet and try again.");
       setIsSubmitting(false);
     }
   };

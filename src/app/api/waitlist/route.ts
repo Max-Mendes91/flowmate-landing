@@ -11,7 +11,9 @@ export async function POST(request: NextRequest) {
     const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
 
     if (!supabaseUrl || !supabaseSecretKey) {
-      console.error("Missing Supabase environment variables");
+      console.error(
+        "Missing Supabase environment variables. Please ensure NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SECRET_KEY are set in your .env.local file. See .env.local.example for reference."
+      );
       return NextResponse.json(
         { error: "Server configuration error" },
         { status: 500 }
