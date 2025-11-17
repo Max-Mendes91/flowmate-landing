@@ -9,7 +9,7 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const email = "hello@flowmate.com";
+  const email = "support@flowmate.click";
   const [showCopied, setShowCopied] = useState(false);
   const [showOpening, setShowOpening] = useState(false);
 

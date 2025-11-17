@@ -27,10 +27,10 @@ export default function PrivacyPage() {
           <p className="mb-4 text-text-secondary">
             For questions, contact us at{" "}
             <a
-              href="mailto:privacy@flowmate.com"
+              href="mailto:support@flowmate.click"
               className="text-accent-blue hover:underline"
             >
-              privacy@flowmate.com
+              support@flowmate.click
             </a>
             .
           </p>

@@ -27,10 +27,10 @@ export default function TermsPage() {
           <p className="mb-4 text-text-secondary">
             For questions, contact us at{" "}
             <a
-              href="mailto:legal@flowmate.com"
+              href="mailto:support@flowmate.click"
               className="text-accent-blue hover:underline"
             >
-              legal@flowmate.com
+              support@flowmate.click
             </a>
             .
           </p>
