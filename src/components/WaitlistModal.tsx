@@ -84,7 +84,7 @@ export default function WaitlistModal({
       } catch {
         // Response is not valid JSON
         if (response.status === 500) {
-          setError("Server configuration error. Please contact support.");
+          setError("Server configuration error. Please contact support@flowmate.click");
           setIsSubmitting(false);
           return;
         }
