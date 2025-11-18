@@ -144,6 +144,9 @@ export default function WaitlistModal({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2 }}
               className="w-full max-w-md pointer-events-auto my-auto max-h-[calc(100vh-1.5rem)] overflow-y-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="waitlist-modal-title"
             >
               <div className="relative rounded-2xl sm:rounded-3xl border border-white/10 bg-dark-secondary/95 backdrop-blur-xl shadow-2xl p-4 sm:p-8">
               {/* Close Button - More prominent on mobile */}
@@ -187,7 +190,7 @@ export default function WaitlistModal({
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-2xl font-bold text-text-primary mb-1 sm:mb-2 text-center">
+                  <h3 id="waitlist-modal-title" className="text-lg sm:text-2xl font-bold text-text-primary mb-1 sm:mb-2 text-center">
                     Join the Waitlist
                   </h3>
                   <p className="text-xs sm:text-base text-text-secondary mb-4 sm:mb-8 text-center">
@@ -197,7 +200,11 @@ export default function WaitlistModal({
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
                     <div>
+                      <label htmlFor="waitlist-email" className="sr-only">
+                        Email address
+                      </label>
                       <input
+                        id="waitlist-email"
                         type="email"
                         value={email}
                         onChange={(e) => {
@@ -206,7 +213,9 @@ export default function WaitlistModal({
                         }}
                         placeholder="Enter your email"
                         disabled={isSubmitting}
-                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border text-text-primary placeholder:text-text-muted focus:outline-none transition-colors disabled:opacity-50 text-sm sm:text-base ${
+                        aria-describedby={error ? "waitlist-error" : undefined}
+                        aria-invalid={error ? "true" : "false"}
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/5 border text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-gold/30 transition-colors disabled:opacity-50 text-sm sm:text-base ${
                           error ? "border-red-500/50 focus:border-red-500/70" : "border-white/10 focus:border-gold/40"
                         }`}
                       />
@@ -218,8 +227,9 @@ export default function WaitlistModal({
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-red-500/10 border border-red-500/20"
+                        role="alert"
                       >
-                        <p className="text-xs sm:text-sm text-red-400">{error}</p>
+                        <p id="waitlist-error" className="text-xs sm:text-sm text-red-400">{error}</p>
                       </motion.div>
                     )}
 

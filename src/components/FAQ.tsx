@@ -79,7 +79,9 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left rounded-2xl border border-white/12 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm p-6 md:p-8 hover:border-gold-border transition-all duration-300"
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                  className="w-full text-left rounded-2xl border border-white/12 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm p-6 md:p-8 hover:border-gold-border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold/30"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-lg md:text-xl font-semibold text-text-primary pr-8">
@@ -109,6 +111,7 @@ export default function FAQ() {
                   </div>
 
                   <motion.div
+                    id={`faq-answer-${index}`}
                     initial={false}
                     animate={{
                       height: openIndex === index ? "auto" : 0,
@@ -116,6 +119,8 @@ export default function FAQ() {
                     }}
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
+                    role="region"
+                    aria-hidden={openIndex !== index}
                   >
                     <p className="text-text-secondary leading-relaxed pt-4 pr-8">
                       {faq.answer}

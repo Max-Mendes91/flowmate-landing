@@ -1,13 +1,16 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import CredibilityAnchors from "@/components/CredibilityAnchors";
-import ProblemSolution from "@/components/ProblemSolution";
-import Features from "@/components/Features";
-import HowItWorks from "@/components/HowItWorks";
-import Roadmap from "@/components/Roadmap";
-import CTA from "@/components/CTA";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+
+// Dynamic imports for below-fold content (code splitting)
+const ProblemSolution = dynamic(() => import("@/components/ProblemSolution"));
+const Features = dynamic(() => import("@/components/Features"));
+const HowItWorks = dynamic(() => import("@/components/HowItWorks"));
+const Roadmap = dynamic(() => import("@/components/Roadmap"));
+const CTA = dynamic(() => import("@/components/CTA"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (

@@ -10,4 +10,23 @@
   * {
     @apply border-neutral-200;
   }
+
+  /* Focus visible styles for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-[rgba(228,207,163,0.5)] ring-offset-2 ring-offset-[#050506];
+  }
+
+  /* Remove focus ring for mouse users */
+  *:focus:not(:focus-visible) {
+    @apply outline-none ring-0;
+  }
+
+  /* Button and interactive element focus styles */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply ring-2 ring-[rgba(228,207,163,0.5)];
+  }
 }

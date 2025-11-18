@@ -84,7 +84,7 @@ export default function Features() {
           transition={{ duration: 0.45 }}
           className="text-4xl md:text-5xl font-bold text-center mb-16 text-text-primary"
         >
-          How FlowMate works
+          Core Features
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
