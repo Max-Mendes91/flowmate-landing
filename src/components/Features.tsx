@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 
 const features = [
   {
@@ -110,69 +111,189 @@ const features = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+// Feature card with 3D tilt effect
+function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setIsHovered(false);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer"
+    >
+      {/* Glowing orb effect on hover */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl opacity-0 pointer-events-none"
+        animate={{
+          opacity: isHovered ? 0.15 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+        style={{
+          background:
+            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(77, 159, 255, 0.4), transparent 40%)",
+        }}
+      />
+
+      <motion.div
+        style={{
+          transform: "translateZ(50px)",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5 group-hover:bg-accent-blue/20 transition-colors duration-300">
+          {feature.icon}
+        </div>
+        <h3 className="text-xl font-semibold mb-3 text-text-primary">
+          {feature.title}
+        </h3>
+        <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 md:py-32 relative">
+    <section id="features" className="py-24 md:py-32 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.45 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 text-text-primary"
+          className="text-4xl md:text-5xl font-bold text-center mb-20 text-text-primary"
         >
           Core Features
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* First 3 cards - full width on desktop */}
-          {features.slice(0, 3).map((feature, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={cardVariants}
-              transition={{ duration: 0.45, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300"
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-text-primary">
-                {feature.title}
-              </h3>
-              <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
-            </motion.div>
-          ))}
-
-          {/* Last 2 cards - centered on desktop */}
-          <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 md:max-w-3xl md:mx-auto">
-            {features.slice(3).map((feature, index) => (
+        {/* Circular orbital layout for desktop, stack for mobile */}
+        <div className="relative max-w-7xl mx-auto">
+          {/* Desktop: Circular Layout */}
+          <div className="hidden md:block" style={{ perspective: "1500px" }}>
+            <div className="relative mx-auto" style={{ width: "900px", height: "900px" }}>
+              {/* Center glow */}
               <motion.div
-                key={index + 3}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={cardVariants}
-                transition={{ duration: 0.45, delay: (index + 3) * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-text-primary">
-                  {feature.title}
-                </h3>
-                <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
-              </motion.div>
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-accent-blue/5 blur-3xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Orbital cards */}
+              {features.map((feature, index) => {
+                const angle = (index * 72 - 90) * (Math.PI / 180); // 360/5 = 72 degrees apart, start from top
+                const radius = 320;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+
+                return (
+                  <motion.div
+                    key={index}
+                    className="absolute"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      width: "280px",
+                    }}
+                    initial={{
+                      x: 0,
+                      y: 0,
+                      opacity: 0,
+                    }}
+                    whileInView={{
+                      x: x - 140, // 280/2 = 140 to center the card
+                      y: y - 100,
+                      opacity: 1,
+                    }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{
+                      duration: 0.8,
+                      delay: index * 0.15,
+                      type: "spring",
+                      stiffness: 80,
+                    }}
+                  >
+                    {/* Floating animation */}
+                    <motion.div
+                      animate={{
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: index * 0.4,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <FeatureCard feature={feature} index={index} />
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile: Stack Layout */}
+          <div className="md:hidden space-y-6">
+            {features.map((feature, index) => (
+              <div key={index}>
+                <FeatureCard feature={feature} index={index} />
+              </div>
             ))}
           </div>
         </div>
