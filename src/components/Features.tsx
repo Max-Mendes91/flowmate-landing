@@ -249,14 +249,14 @@ export default function Features() {
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop: Circular Layout */}
           <div className="hidden md:block" style={{ perspective: "1500px" }}>
-            <div className="relative mx-auto" style={{ width: "1100px", height: "1100px" }}>
+            <div className="relative mx-auto" style={{ width: "900px", height: "900px", maxWidth: "90vw" }}>
               {/* Center glow - Blue and Gold layers */}
               <motion.div
                 className="absolute pointer-events-none"
                 style={{
                   zIndex: 0,
-                  top: "calc(50% - 20px)",
-                  left: "calc(50% - 10px)",
+                  top: "50%",
+                  left: "50%",
                   transform: "translate(-50%, -50%)"
                 }}
               >
@@ -317,7 +317,7 @@ export default function Features() {
               {/* Rotating orbital container */}
               <motion.div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ width: "720px", height: "720px" }}
+                style={{ width: "700px", height: "700px" }}
                 animate={{
                   rotate: 360,
                 }}
@@ -330,7 +330,7 @@ export default function Features() {
                 {/* Orbital cards */}
                 {features.map((feature, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
-                  const radius = 360;
+                  const radius = 300;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
 
