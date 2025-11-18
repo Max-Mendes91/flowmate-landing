@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  // Optimize for better TBT scores
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  experimental: {
+    optimizePackageImports: ["framer-motion", "react-icons"],
+  },
 };
 
 export default nextConfig;

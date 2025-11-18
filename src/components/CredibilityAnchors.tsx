@@ -65,22 +65,9 @@ export default function CredibilityAnchors() {
           </motion.p>
         </div>
 
-        {/* Desktop/Laptop: Infinite carousel */}
+        {/* Desktop/Laptop: Infinite carousel - CSS animation for better performance */}
         <div className="hidden md:block relative overflow-hidden max-w-6xl mx-auto">
-          <motion.div
-            className="flex gap-12"
-            animate={{
-              x: [0, -1 * (integrations.length * 160)],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              },
-            }}
-          >
+          <div className="flex gap-12 animate-scroll-carousel">
             {duplicatedIntegrations.map((integration, index) => (
               <div
                 key={`${integration.name}-${index}`}
@@ -90,19 +77,19 @@ export default function CredibilityAnchors() {
                 <div className="absolute inset-0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ backgroundColor: `${integration.color}20` }}
                 />
-                <div className="relative flex flex-col items-center justify-center px-6 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-all duration-300">
+                <div className="relative flex flex-col items-center justify-center px-6 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-all duration-300 h-[100px]">
                   <integration.icon
                     className="text-3xl mb-2 transition-colors duration-300"
                     style={{ color: integration.color }}
                     aria-label={`${integration.label} logo`}
                   />
-                  <span className="text-text-secondary group-hover:text-text-primary text-xs font-medium transition-colors text-center">
+                  <span className="text-text-secondary group-hover:text-text-primary text-xs font-medium transition-colors text-center leading-tight">
                     {integration.label}
                   </span>
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Mobile/Tablet: Static grid */}
@@ -125,13 +112,13 @@ export default function CredibilityAnchors() {
               <div className="absolute inset-0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ backgroundColor: `${integration.color}20` }}
               />
-              <div className="relative flex flex-col items-center justify-center px-4 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-all duration-300">
+              <div className="relative flex flex-col items-center justify-center px-4 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group-hover:border-white/30 transition-all duration-300 h-[100px]">
                 <integration.icon
                   className="text-3xl mb-2 transition-colors duration-300"
                   style={{ color: integration.color }}
                   aria-label={`${integration.label} logo`}
                 />
-                <span className="text-text-secondary group-hover:text-text-primary text-xs font-medium transition-colors text-center">
+                <span className="text-text-secondary group-hover:text-text-primary text-xs font-medium transition-colors text-center leading-tight">
                   {integration.label}
                 </span>
               </div>

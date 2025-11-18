@@ -30,3 +30,23 @@
     @apply ring-2 ring-[rgba(228,207,163,0.5)];
   }
 }
+
+@layer utilities {
+  /* Carousel animation - uses CSS instead of JS for better performance */
+  @keyframes scroll-carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-160px * 6));
+    }
+  }
+
+  .animate-scroll-carousel {
+    animation: scroll-carousel 20s linear infinite;
+  }
+
+  .animate-scroll-carousel:hover {
+    animation-play-state: paused;
+  }
+}
