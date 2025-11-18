@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 const features = [
   {
     title: "Send emails with one sentence",
-    desc: "Drafts and sends emails through Gmail or Outlook using your tone and context.",
+    desc: "Draft and send emails through Gmail or Outlook using your tone.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -26,8 +26,8 @@ const features = [
     ),
   },
   {
-    title: "Schedule meetings automatically",
-    desc: "Understands dates, times, durations, and availability across time zones.",
+    title: "Schedule meetings instantly",
+    desc: "Understand dates, times, and availability across time zones.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -47,8 +47,29 @@ const features = [
     ),
   },
   {
+    title: "Automate task management",
+    desc: "Create, update, and track tasks automatically across your workflow.",
+    icon: (
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        aria-label="Task icon"
+        role="img"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+        />
+      </svg>
+    ),
+  },
+  {
     title: "Post updates to Slack",
-    desc: "Notify channels, create reminders, and trigger workflows without opening Slack.",
+    desc: "Notify channels and trigger workflows without opening Slack.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -69,7 +90,7 @@ const features = [
   },
   {
     title: "AI assistant on WhatsApp",
-    desc: "Your personal AI assistant on mobile. Make appointments, send emails, fetch unread messages, and manage your workflow—all through WhatsApp chat.",
+    desc: "Make appointments, send emails, and manage tasks via WhatsApp.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -90,7 +111,7 @@ const features = [
   },
   {
     title: "AI assistant on Telegram",
-    desc: "Control your entire workflow from Telegram. Schedule meetings, send emails, check inbox, and automate tasks using natural conversation with your AI assistant.",
+    desc: "Schedule meetings, check inbox, and automate tasks via Telegram.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -169,7 +190,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         transformStyle: "preserve-3d",
         clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
-      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer"
+      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-10 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer h-[220px] flex flex-col justify-center items-center"
     >
       {/* Glowing orb effect on hover */}
       <motion.div
@@ -196,14 +217,15 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
           transform: "translateZ(50px)",
           transformStyle: "preserve-3d",
         }}
+        className="flex flex-col items-center text-center"
       >
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5 group-hover:bg-accent-blue/20 transition-colors duration-300">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-4 group-hover:bg-accent-blue/20 transition-colors duration-300">
           {feature.icon}
         </div>
-        <h3 className="text-xl font-semibold mb-3 text-text-primary">
+        <h3 className="text-lg font-semibold mb-2 text-text-primary px-4">
           {feature.title}
         </h3>
-        <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
+        <p className="text-sm text-text-secondary leading-relaxed px-4">{feature.desc}</p>
       </motion.div>
     </motion.div>
   );
@@ -289,8 +311,8 @@ export default function Features() {
 
               {/* Orbital cards */}
               {features.map((feature, index) => {
-                const angle = (index * 72 - 90) * (Math.PI / 180); // 360/5 = 72 degrees apart, start from top
-                const radius = 380;
+                const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
+                const radius = 360;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -310,13 +332,13 @@ export default function Features() {
                     }}
                     whileInView={{
                       x: x - 140, // 280/2 = 140 to center the card
-                      y: y - 100,
+                      y: y - 110,
                       opacity: 1,
                     }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{
                       duration: 0.8,
-                      delay: index * 0.15,
+                      delay: index * 0.12,
                       type: "spring",
                       stiffness: 80,
                     }}
@@ -329,7 +351,7 @@ export default function Features() {
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        delay: index * 0.4,
+                        delay: index * 0.3,
                         ease: "easeInOut",
                       }}
                     >
