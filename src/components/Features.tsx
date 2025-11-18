@@ -190,7 +190,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         transformStyle: "preserve-3d",
         clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
-      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-10 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer h-[220px] flex flex-col justify-center items-center"
+      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer h-[200px] flex flex-col justify-center items-center"
     >
       {/* Glowing orb effect on hover */}
       <motion.div
@@ -317,7 +317,7 @@ export default function Features() {
               {/* Rotating orbital container */}
               <motion.div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ width: "700px", height: "700px" }}
+                style={{ width: "900px", height: "900px" }}
                 animate={{
                   rotate: 360,
                 }}
@@ -330,7 +330,7 @@ export default function Features() {
                 {/* Orbital cards */}
                 {features.map((feature, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
-                  const radius = 300;
+                  const radius = 240;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
 
@@ -341,15 +341,15 @@ export default function Features() {
                       style={{
                         left: "50%",
                         top: "50%",
-                        width: "280px",
+                        width: "260px",
                       }}
                       initial={{
-                        x: -140, // Start at center
+                        x: -130, // Start at center
                         y: -110,
                         opacity: 0,
                       }}
                       animate={{
-                        x: x - 140, // 280/2 = 140 to center the card
+                        x: x - 130, // 260/2 = 130 to center the card
                         y: y - 110,
                         opacity: 1,
                       }}
