@@ -21,9 +21,11 @@ export default function BackgroundLines() {
     <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
       <svg
         width="100%"
-        height="100%"
+        height="300%"
+        viewBox="0 0 2000 6000"
         xmlns="http://www.w3.org/2000/svg"
         className="absolute inset-0"
+        preserveAspectRatio="xMidYMid slice"
       >
         <defs>
           <linearGradient id="goldGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -50,12 +52,12 @@ export default function BackgroundLines() {
           </filter>
         </defs>
 
-        {/* Main dramatic lines with enhanced movement */}
+        {/* Top Section Lines (Hero Area) */}
 
-        {/* Line 1 - Fast upward movement */}
+        {/* Line 1 - Top diagonal */}
         <motion.path
           style={{ y: y1, opacity: opacity1 }}
-          d="M -200 300 Q 400 150 900 400 T 2000 250"
+          d="M -200 400 Q 600 250 1400 500 T 2800 400"
           stroke="url(#goldGradient1)"
           strokeWidth="2"
           fill="none"
@@ -63,20 +65,22 @@ export default function BackgroundLines() {
           filter="url(#glow)"
         />
 
-        {/* Line 2 - Downward movement */}
+        {/* Line 2 - Upper horizontal */}
         <motion.path
           style={{ y: y2 }}
-          d="M -300 600 Q 500 550 1200 650 T 2400 600"
+          d="M -300 800 Q 700 700 1600 900 T 3000 800"
           stroke="url(#goldGradient2)"
           strokeWidth="1.5"
           fill="none"
           strokeLinecap="round"
         />
 
-        {/* Line 3 - Strong upward movement */}
+        {/* Middle Section Lines */}
+
+        {/* Line 3 - Mid diagonal */}
         <motion.path
           style={{ y: y3, opacity: opacity2 }}
-          d="M 600 900 Q 1100 750 1900 1000 T 2800 850"
+          d="M -200 1600 Q 800 1400 1800 1700 T 3200 1600"
           stroke="url(#goldGradient3)"
           strokeWidth="2"
           fill="none"
@@ -84,40 +88,85 @@ export default function BackgroundLines() {
           filter="url(#glow)"
         />
 
-        {/* Line 4 - Vertical sweep */}
+        {/* Line 4 - Mid horizontal wave */}
         <motion.path
           style={{ y: y4 }}
-          d="M 1500 -200 Q 1600 300 1450 900 T 1500 1600"
+          d="M -400 2200 Q 600 2100 1600 2300 T 3200 2200"
           stroke="url(#goldGradient1)"
           strokeWidth="1.5"
           fill="none"
           strokeLinecap="round"
         />
 
-        {/* Line 5 - Diagonal sweep */}
+        {/* Line 5 - Mid-lower curve */}
         <motion.path
           style={{ y: y5 }}
-          d="M -100 400 Q 600 350 1100 500 T 2200 450"
+          d="M -200 2800 Q 900 2600 1900 2900 T 3400 2800"
           stroke="url(#goldGradient2)"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Lower Section Lines */}
+
+        {/* Line 6 - Lower wave */}
+        <motion.path
+          style={{ y: y6 }}
+          d="M -300 3600 Q 800 3400 1800 3700 T 3400 3600"
+          stroke="url(#goldGradient3)"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+          filter="url(#glow)"
+        />
+
+        {/* Line 7 - Bottom diagonal */}
+        <motion.path
+          style={{ y: y1 }}
+          d="M -200 4400 Q 700 4200 1700 4500 T 3200 4400"
+          stroke="url(#goldGradient1)"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Line 8 - Deep bottom wave */}
+        <motion.path
+          style={{ y: y2 }}
+          d="M -400 5200 Q 900 5000 2000 5300 T 3600 5200"
+          stroke="url(#goldGradient2)"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+        />
+
+        {/* Vertical Sweeping Lines for Continuity */}
+
+        {/* Vertical 1 - Left side */}
+        <motion.path
+          style={{ y: y4 }}
+          d="M 300 200 Q 400 1500 350 3000 T 400 5500"
+          stroke="url(#goldGradient3)"
           strokeWidth="1"
           fill="none"
           strokeLinecap="round"
         />
 
-        {/* Line 6 - Bottom wave */}
+        {/* Vertical 2 - Right side */}
         <motion.path
-          style={{ y: y6 }}
-          d="M -200 1100 Q 700 1000 1400 1200 T 2600 1150"
-          stroke="url(#goldGradient3)"
-          strokeWidth="1.5"
+          style={{ y: y5 }}
+          d="M 1700 300 Q 1600 1800 1650 3500 T 1700 5800"
+          stroke="url(#goldGradient1)"
+          strokeWidth="1"
           fill="none"
           strokeLinecap="round"
         />
 
-        {/* Accent lines - smaller, faster movement */}
+        {/* Accent lines - distributed throughout */}
         <motion.path
           style={{ y: y1 }}
-          d="M 300 100 Q 700 400 1000 200"
+          d="M 500 600 Q 1000 1100 1400 900"
           stroke="#E4CFA3"
           strokeWidth="0.8"
           fill="none"
@@ -127,7 +176,7 @@ export default function BackgroundLines() {
 
         <motion.path
           style={{ y: y3 }}
-          d="M -150 1200 Q 800 1100 1500 1300"
+          d="M -150 3200 Q 800 3000 1500 3300"
           stroke="#E4CFA3"
           strokeWidth="0.8"
           fill="none"
@@ -135,13 +184,13 @@ export default function BackgroundLines() {
           strokeLinecap="round"
         />
 
-        {/* Crossing diagonal for depth */}
         <motion.path
-          style={{ y: y5 }}
-          d="M 2000 200 Q 1400 500 800 350"
-          stroke="url(#goldGradient1)"
-          strokeWidth="1"
+          style={{ y: y6 }}
+          d="M 600 4800 Q 1200 4500 1800 4900"
+          stroke="#E4CFA3"
+          strokeWidth="0.8"
           fill="none"
+          opacity="0.06"
           strokeLinecap="round"
         />
       </svg>
