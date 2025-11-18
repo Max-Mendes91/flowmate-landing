@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SiGmail, SiMicrosoftoutlook, SiGooglecalendar, SiSlack, SiWhatsapp, SiTelegram } from "react-icons/si";
+import { SiGmail, SiGooglecalendar, SiSlack, SiWhatsapp, SiTelegram } from "react-icons/si";
+import { HiOutlineMail } from "react-icons/hi";
 
 const integrations = [
   { name: "Gmail", label: "Gmail", icon: SiGmail, color: "#EA4335" },
-  { name: "Outlook", label: "Outlook", icon: SiMicrosoftoutlook, color: "#0078D4" },
+  { name: "Outlook", label: "Outlook", icon: HiOutlineMail, color: "#0078D4" },
   { name: "Google Calendar", label: "Google Calendar", icon: SiGooglecalendar, color: "#4285F4" },
   { name: "Slack", label: "Slack", icon: SiSlack, color: "#4A154B" },
   { name: "WhatsApp", label: "WhatsApp", icon: SiWhatsapp, color: "#25D366" },
