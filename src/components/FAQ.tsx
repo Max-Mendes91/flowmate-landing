@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Does FlowMate work on mobile?",
     answer:
-      "Mobile apps for iOS and Android are planned for Q2 2026. For now, FlowMate works via our Chrome extension and web app, which are mobile-responsive and work on tablet browsers.",
+      "Yes! Our private beta launch includes WhatsApp and Telegram integrations, letting you use FlowMate as your personal AI assistant directly from your mobile device. Make appointments, send emails, check unread messages, and more—all through natural conversation with our AI chatbot on Telegram or WhatsApp. Native iOS and Android apps are planned for Q2 2026.",
   },
   {
     question: "How much does FlowMate cost?",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Can FlowMate integrate with other tools?",
     answer:
-      "Currently, FlowMate supports Gmail, Outlook, Google Calendar, and Slack. We're building integrations for Microsoft Teams, Zoom, Notion, and more based on user demand. Vote for your favorite integrations in our beta community.",
+      "Currently, FlowMate supports Gmail, Outlook, Google Calendar, Slack, WhatsApp, and Telegram. Our private beta includes full WhatsApp and Telegram integration, giving you a personal AI assistant on your mobile device. We're building integrations for Microsoft Teams, Zoom, Notion, and more based on user demand. Vote for your favorite integrations in our beta community.",
   },
 ];
 
