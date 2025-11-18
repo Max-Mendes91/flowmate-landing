@@ -50,8 +50,7 @@ export default function Hero() {
           transition={{ duration: 0.45 }}
           className="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight bg-gradient-to-r from-white via-gold/60 to-gold bg-clip-text text-transparent"
         >
-          AI that sends emails, schedules meetings, and updates Slack — all
-          from one prompt.
+          Your AI assistant for email, meetings, and team communication
         </motion.h1>
 
         <motion.p
@@ -61,8 +60,8 @@ export default function Hero() {
           transition={{ duration: 0.45, delay: 0.1 }}
           className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl mx-auto"
         >
-          FlowMate understands natural language across Gmail, Outlook, Google
-          Calendar, and Slack.
+          FlowMate connects your favorite tools — Gmail, Outlook, Calendar, Slack, WhatsApp,
+          and Telegram — so you can work faster with simple commands.
         </motion.p>
 
         <motion.div

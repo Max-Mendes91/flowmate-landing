@@ -68,7 +68,7 @@ const features = [
   },
   {
     title: "Chat on WhatsApp",
-    desc: "Connect your WhatsApp and let our AI agent handle conversations and tasks directly in your chats.",
+    desc: "Send messages and automate WhatsApp conversations with AI assistance.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -89,7 +89,7 @@ const features = [
   },
   {
     title: "Message via Telegram",
-    desc: "Integrate with Telegram to automate messages, notifications, and workflows in your groups and channels.",
+    desc: "Manage Telegram chats, channels, and notifications automatically.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -129,8 +129,9 @@ export default function Features() {
           Core Features
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* First 3 cards - full width on desktop */}
+          {features.slice(0, 3).map((feature, index) => (
             <motion.div
               key={index}
               initial="hidden"
@@ -150,6 +151,30 @@ export default function Features() {
               <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
+
+          {/* Last 2 cards - centered on desktop */}
+          <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 md:max-w-3xl md:mx-auto">
+            {features.slice(3).map((feature, index) => (
+              <motion.div
+                key={index + 3}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={cardVariants}
+                transition={{ duration: 0.45, delay: (index + 3) * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-blue/10 text-accent-blue mb-5">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-text-primary">
+                  {feature.title}
+                </h3>
+                <p className="text-text-secondary leading-relaxed">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
