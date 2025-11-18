@@ -7,7 +7,7 @@ const steps = [
     step: "01",
     title: "Type your request in natural language",
     description:
-      "No syntax, no commands. Just say what you want: 'Email the team about tomorrow's standup at 10am and add it to my calendar.'",
+      "No syntax, no commands. Just say what you want—via web, Chrome extension, WhatsApp, or Telegram: 'Email the team about tomorrow's standup at 10am and add it to my calendar.' Use our AI assistant on your mobile through Telegram or WhatsApp for seamless on-the-go productivity.",
     icon: (
       <svg
         className="w-6 h-6"

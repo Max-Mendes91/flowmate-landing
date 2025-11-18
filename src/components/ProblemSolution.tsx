@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 
 const problems = [
   {
-    problem: "Switching between 4+ apps wastes hours every day",
-    solution: "One interface controls Gmail, Outlook, Calendar, and Slack",
+    problem: "Switching between multiple apps wastes hours every day",
+    solution: "One AI assistant controls everything—from your desktop, mobile, WhatsApp, or Telegram",
   },
   {
-    problem: "Typing the same info in emails, meetings, and messages",
-    solution: "FlowMate understands context and auto-fills details",
+    problem: "Managing your workflow only when you're at your desk",
+    solution: "Your personal AI assistant works anywhere via WhatsApp or Telegram—make appointments, send emails, check inbox on the go",
   },
   {
     problem: "Forgetting to follow up or update your team",
-    solution: "AI handles routine communication on autopilot",
+    solution: "AI handles routine communication on autopilot across email, calendar, and messaging apps",
   },
 ];
 
@@ -36,7 +36,7 @@ export default function ProblemSolution() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            FlowMate eliminates the friction between thinking and doing.
+            Your personal AI assistant for email, calendar, and messaging—available on desktop, web, WhatsApp, and Telegram.
           </p>
         </motion.div>
 

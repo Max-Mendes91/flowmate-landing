@@ -67,8 +67,8 @@ const features = [
     ),
   },
   {
-    title: "Chat on WhatsApp",
-    desc: "Send messages and automate WhatsApp conversations with AI assistance.",
+    title: "AI assistant on WhatsApp",
+    desc: "Your personal AI assistant on mobile. Make appointments, send emails, fetch unread messages, and manage your workflow—all through WhatsApp chat.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -88,8 +88,8 @@ const features = [
     ),
   },
   {
-    title: "Message via Telegram",
-    desc: "Manage Telegram chats, channels, and notifications automatically.",
+    title: "AI assistant on Telegram",
+    desc: "Control your entire workflow from Telegram. Schedule meetings, send emails, check inbox, and automate tasks using natural conversation with your AI assistant.",
     icon: (
       <svg
         className="w-6 h-6"
