@@ -11,7 +11,6 @@ const roadmapItems = [
       "Gmail & Outlook email automation",
       "Google Calendar scheduling",
       "Basic Slack integration",
-      "Chrome extension",
     ],
     badge: "Current",
     badgeColor: "gold",
