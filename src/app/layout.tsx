@@ -14,19 +14,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "FlowMate – AI Assistant for Email, Calendar & Slack Automation",
   description:
-    "FlowMate lets you type one natural-language message and automatically sends emails, schedules meetings, and posts to Slack.",
+    "FlowMate lets you type one natural-language message and automatically sends emails, schedules meetings, posts to Slack, and connects with WhatsApp & Telegram.",
   metadataBase: new URL("https://flowmate.click"),
   keywords: [
     "AI assistant",
     "email automation",
     "calendar scheduling",
     "Slack integration",
+    "WhatsApp automation",
+    "Telegram integration",
     "productivity",
     "Gmail",
     "Outlook",
     "Google Calendar",
     "workflow automation",
     "AI productivity tool",
+    "messaging automation",
   ],
   authors: [{ name: "FlowMate Team" }],
   alternates: {
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FlowMate – AI Assistant for Email, Calendar & Slack Automation",
     description:
-      "AI assistant for Gmail, Outlook, Google Calendar, and Slack.",
+      "AI assistant for Gmail, Outlook, Google Calendar, Slack, WhatsApp, and Telegram.",
     url: "https://flowmate.click",
     siteName: "FlowMate",
     images: [
@@ -64,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FlowMate – AI Assistant for Email, Calendar & Slack Automation",
     description:
-      "FlowMate lets you type one natural-language message and automatically sends emails, schedules meetings, and posts to Slack.",
+      "FlowMate lets you type one natural-language message and automatically sends emails, schedules meetings, posts to Slack, and connects with WhatsApp & Telegram.",
     images: ["/og.jpg"],
     creator: "@flowmateai",
   },

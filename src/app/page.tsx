@@ -8,6 +8,7 @@ const ProblemSolution = dynamic(() => import("@/components/ProblemSolution"));
 const Features = dynamic(() => import("@/components/Features"));
 const HowItWorks = dynamic(() => import("@/components/HowItWorks"));
 const Roadmap = dynamic(() => import("@/components/Roadmap"));
+const Pricing = dynamic(() => import("@/components/Pricing"));
 const CTA = dynamic(() => import("@/components/CTA"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
 const Footer = dynamic(() => import("@/components/Footer"));
@@ -25,6 +26,8 @@ export default function Home() {
       <HowItWorks />
       <SectionDivider />
       <Roadmap />
+      <SectionDivider />
+      <Pricing />
       <SectionDivider />
       <CTA />
       <SectionDivider />
