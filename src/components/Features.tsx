@@ -167,21 +167,29 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
+        clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
-      className="group relative rounded-2xl border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer"
+      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer"
     >
       {/* Glowing orb effect on hover */}
       <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 pointer-events-none"
+        className="absolute inset-0 opacity-0 pointer-events-none"
+        style={{
+          clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+        }}
         animate={{
           opacity: isHovered ? 0.15 : 0,
         }}
         transition={{ duration: 0.3 }}
-        style={{
-          background:
-            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(77, 159, 255, 0.4), transparent 40%)",
-        }}
-      />
+      >
+        <div
+          className="w-full h-full"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(77, 159, 255, 0.5), transparent 70%)",
+          }}
+        />
+      </motion.div>
 
       <motion.div
         style={{
@@ -219,25 +227,70 @@ export default function Features() {
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop: Circular Layout */}
           <div className="hidden md:block" style={{ perspective: "1500px" }}>
-            <div className="relative mx-auto" style={{ width: "900px", height: "900px" }}>
-              {/* Center glow */}
+            <div className="relative mx-auto" style={{ width: "1100px", height: "1100px" }}>
+              {/* Center glow - Blue and Gold layers */}
               <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-accent-blue/5 blur-3xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                style={{ zIndex: 0 }}
+              >
+                {/* Gold outer glow */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl"
+                  style={{
+                    background: "radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%)",
+                  }}
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.4, 0.7, 0.4],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+
+                {/* Blue inner glow */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-2xl"
+                  style={{
+                    background: "radial-gradient(circle, rgba(77, 159, 255, 0.4) 0%, transparent 70%)",
+                  }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.8, 0.5],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                />
+
+                {/* Core light */}
+                <motion.div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full"
+                  style={{
+                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(77, 159, 255, 0.6) 40%, transparent 70%)",
+                    boxShadow: "0 0 80px rgba(77, 159, 255, 0.6), 0 0 40px rgba(212, 175, 55, 0.4)",
+                  }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.7, 1, 0.7],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </motion.div>
 
               {/* Orbital cards */}
               {features.map((feature, index) => {
                 const angle = (index * 72 - 90) * (Math.PI / 180); // 360/5 = 72 degrees apart, start from top
-                const radius = 320;
+                const radius = 380;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
