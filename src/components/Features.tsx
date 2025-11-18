@@ -252,8 +252,13 @@ export default function Features() {
             <div className="relative mx-auto" style={{ width: "1100px", height: "1100px" }}>
               {/* Center glow - Blue and Gold layers */}
               <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                style={{ zIndex: 0 }}
+                className="absolute pointer-events-none"
+                style={{
+                  zIndex: 0,
+                  top: "calc(50% - 20px)",
+                  left: "calc(50% - 10px)",
+                  transform: "translate(-50%, -50%)"
+                }}
               >
                 {/* Gold outer glow */}
                 <motion.div
@@ -309,57 +314,69 @@ export default function Features() {
                 />
               </motion.div>
 
-              {/* Orbital cards */}
-              {features.map((feature, index) => {
-                const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
-                const radius = 360;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
+              {/* Rotating orbital container */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                style={{ width: "720px", height: "720px" }}
+                animate={{
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                {/* Orbital cards */}
+                {features.map((feature, index) => {
+                  const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
+                  const radius = 360;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
 
-                return (
-                  <motion.div
-                    key={index}
-                    className="absolute"
-                    style={{
-                      left: "50%",
-                      top: "50%",
-                      width: "280px",
-                    }}
-                    initial={{
-                      x: 0,
-                      y: 0,
-                      opacity: 0,
-                    }}
-                    whileInView={{
-                      x: x - 140, // 280/2 = 140 to center the card
-                      y: y - 110,
-                      opacity: 1,
-                    }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{
-                      duration: 0.8,
-                      delay: index * 0.12,
-                      type: "spring",
-                      stiffness: 80,
-                    }}
-                  >
-                    {/* Floating animation */}
+                  return (
                     <motion.div
+                      key={index}
+                      className="absolute"
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        width: "280px",
+                      }}
+                      initial={{
+                        x: -140, // Start at center
+                        y: -110,
+                        opacity: 0,
+                      }}
                       animate={{
-                        y: [0, -10, 0],
+                        x: x - 140, // 280/2 = 140 to center the card
+                        y: y - 110,
+                        opacity: 1,
                       }}
                       transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                        ease: "easeInOut",
+                        duration: 0.8,
+                        delay: index * 0.12,
+                        type: "spring",
+                        stiffness: 80,
                       }}
                     >
-                      <FeatureCard feature={feature} index={index} />
+                      {/* Counter-rotate to keep cards upright */}
+                      <motion.div
+                        animate={{
+                          rotate: -360,
+                        }}
+                        transition={{
+                          duration: 40,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      >
+                        <FeatureCard feature={feature} index={index} />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                );
-              })}
+                  );
+                })}
+              </motion.div>
             </div>
           </div>
 
