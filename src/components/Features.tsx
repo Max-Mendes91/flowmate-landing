@@ -133,7 +133,13 @@ const features = [
 ];
 
 // Feature card with 3D tilt effect
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+function FeatureCard({
+  feature,
+  index,
+}: {
+  feature: (typeof features)[0];
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -143,8 +149,16 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"]);
+  const rotateX = useTransform(
+    mouseYSpring,
+    [-0.5, 0.5],
+    ["7.5deg", "-7.5deg"]
+  );
+  const rotateY = useTransform(
+    mouseXSpring,
+    [-0.5, 0.5],
+    ["-7.5deg", "7.5deg"]
+  );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -188,15 +202,17 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
-        clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+        clipPath:
+          "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
       }}
-      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-8 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer h-[200px] flex flex-col justify-center items-center"
+      className="group relative border-t-2 border-t-[rgba(77,159,255,0.45)] border border-white/12 p-10 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm hover:shadow-blue-glow hover:border-[rgba(77,159,255,0.45)] transition-all duration-300 cursor-pointer h-[220px] flex flex-col justify-center items-center"
     >
       {/* Glowing orb effect on hover */}
       <motion.div
         className="absolute inset-0 opacity-0 pointer-events-none"
         style={{
-          clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+          clipPath:
+            "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
         }}
         animate={{
           opacity: isHovered ? 0.15 : 0,
@@ -225,7 +241,9 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         <h3 className="text-lg font-semibold mb-2 text-text-primary px-4">
           {feature.title}
         </h3>
-        <p className="text-sm text-text-secondary leading-relaxed px-4">{feature.desc}</p>
+        <p className="text-sm text-text-secondary leading-relaxed px-4">
+          {feature.desc}
+        </p>
       </motion.div>
     </motion.div>
   );
@@ -249,22 +267,24 @@ export default function Features() {
         <div className="relative max-w-7xl mx-auto">
           {/* Desktop: Circular Layout */}
           <div className="hidden md:block" style={{ perspective: "1500px" }}>
-            <div className="relative mx-auto" style={{ width: "900px", height: "900px", maxWidth: "90vw" }}>
+            <div
+              className="relative mx-auto"
+              style={{ width: "1100px", height: "1100px" }}
+            >
               {/* Center glow - Blue and Gold layers */}
               <motion.div
-                className="absolute pointer-events-none"
+                className="absolute top-1/2 left-1/2 pointer-events-none"
                 style={{
                   zIndex: 0,
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)"
+                  transform: "translate(-50%, -50%) translate(-20px, -20px)",
                 }}
               >
                 {/* Gold outer glow */}
                 <motion.div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl"
                   style={{
-                    background: "radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%)",
+                    background:
+                      "radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%)",
                   }}
                   animate={{
                     scale: [1, 1.3, 1],
@@ -281,7 +301,8 @@ export default function Features() {
                 <motion.div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-2xl"
                   style={{
-                    background: "radial-gradient(circle, rgba(77, 159, 255, 0.4) 0%, transparent 70%)",
+                    background:
+                      "radial-gradient(circle, rgba(77, 159, 255, 0.4) 0%, transparent 70%)",
                   }}
                   animate={{
                     scale: [1, 1.2, 1],
@@ -299,8 +320,10 @@ export default function Features() {
                 <motion.div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full"
                   style={{
-                    background: "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(77, 159, 255, 0.6) 40%, transparent 70%)",
-                    boxShadow: "0 0 80px rgba(77, 159, 255, 0.6), 0 0 40px rgba(212, 175, 55, 0.4)",
+                    background:
+                      "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(77, 159, 255, 0.6) 40%, transparent 70%)",
+                    boxShadow:
+                      "0 0 80px rgba(77, 159, 255, 0.6), 0 0 40px rgba(212, 175, 55, 0.4)",
                   }}
                   animate={{
                     scale: [1, 1.1, 1],
@@ -314,23 +337,21 @@ export default function Features() {
                 />
               </motion.div>
 
-              {/* Rotating orbital container */}
+              {/* Orbital cards - rotating container */}
               <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                style={{ width: "900px", height: "900px" }}
+                className="absolute inset-0"
                 animate={{
                   rotate: 360,
                 }}
                 transition={{
-                  duration: 40,
+                  duration: 60,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               >
-                {/* Orbital cards */}
                 {features.map((feature, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180); // 360/6 = 60 degrees apart, start from top
-                  const radius = 240;
+                  const radius = 360;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
 
@@ -341,18 +362,19 @@ export default function Features() {
                       style={{
                         left: "50%",
                         top: "50%",
-                        width: "260px",
+                        width: "280px",
                       }}
                       initial={{
-                        x: -130, // Start at center
-                        y: -110,
+                        x: 0,
+                        y: 0,
                         opacity: 0,
                       }}
-                      animate={{
-                        x: x - 130, // 260/2 = 130 to center the card
+                      whileInView={{
+                        x: x - 140, // 280/2 = 140 to center the card
                         y: y - 110,
                         opacity: 1,
                       }}
+                      viewport={{ once: true, margin: "-100px" }}
                       transition={{
                         duration: 0.8,
                         delay: index * 0.12,
@@ -360,18 +382,31 @@ export default function Features() {
                         stiffness: 80,
                       }}
                     >
-                      {/* Counter-rotate to keep cards upright */}
+                      {/* Counter-rotation to keep cards upright */}
                       <motion.div
                         animate={{
                           rotate: -360,
                         }}
                         transition={{
-                          duration: 40,
+                          duration: 60,
                           repeat: Infinity,
                           ease: "linear",
                         }}
                       >
-                        <FeatureCard feature={feature} index={index} />
+                        {/* Floating animation */}
+                        <motion.div
+                          animate={{
+                            y: [0, -10, 0],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: index * 0.3,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <FeatureCard feature={feature} index={index} />
+                        </motion.div>
                       </motion.div>
                     </motion.div>
                   );
