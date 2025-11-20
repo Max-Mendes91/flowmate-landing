@@ -26,23 +26,23 @@ export default function Navbar() {
       `}
     >
       {/* Navigation links */}
-      <a href="#features" className="text-sm text-white/90 hover:text-gold transition-colors">
-        Features
-      </a>
       <a
         href="#how-it-works"
         className="text-sm text-white/90 hover:text-gold transition-colors"
       >
         How It Works
       </a>
+      <a href="#features" className="text-sm text-white/90 hover:text-gold transition-colors">
+        Features
+      </a>
       <a href="#roadmap" className="text-sm text-white/90 hover:text-gold transition-colors">
         Roadmap
       </a>
-      <a href="#waitlist" className="text-sm text-white/90 hover:text-gold transition-colors">
-        Join Waitlist
-      </a>
       <a href="#faq" className="text-sm text-white/90 hover:text-gold transition-colors">
         FAQ
+      </a>
+      <a href="#waitlist" className="text-sm text-white/90 hover:text-gold transition-colors">
+        Join Waitlist
       </a>
     </nav>
   );

@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["framer-motion", "react-icons"],
   },
+  // Enable optimizations for TBT
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

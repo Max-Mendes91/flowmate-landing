@@ -105,7 +105,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="bg-gradient-to-b from-[#0A0A0B] via-[#0B0B0D] to-[#050506] text-text-primary antialiased font-sans min-h-screen relative">
+      <body className="bg-gradient-to-b from-[#0A0A0B] via-[#0B0B0D] to-[#050506] text-text-primary antialiased font-sans min-h-screen relative overflow-x-hidden">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gold focus:text-black focus:rounded-lg focus:font-medium"

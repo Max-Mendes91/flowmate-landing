@@ -11,6 +11,16 @@
     @apply border-neutral-200;
   }
 
+  /* Prevent overscroll and horizontal overflow */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+  }
+
   /* Focus visible styles for keyboard navigation */
   *:focus-visible {
     @apply outline-none ring-2 ring-[rgba(228,207,163,0.5)] ring-offset-2 ring-offset-[#050506];
@@ -44,9 +54,16 @@
 
   .animate-scroll-carousel {
     animation: scroll-carousel 20s linear infinite;
+    will-change: transform;
   }
 
   .animate-scroll-carousel:hover {
     animation-play-state: paused;
+  }
+
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
   }
 }
