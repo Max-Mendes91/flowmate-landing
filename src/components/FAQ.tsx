@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "How do I join early access?",
     answer:
-      "Join the waitlist and we&apos;ll send you an invite when your spot opens. Early testers get priority access and lifetime discounts.",
+      "Join the waitlist and we'll send you an invite when your spot opens. Early testers get priority access and lifetime discounts.",
   },
   {
     question: "Can I suggest features?",
@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "When will FlowMate launch publicly?",
     answer:
-      "We&apos;re aiming for mid-2026. Early testers get first access.",
+      "We're aiming for mid-2026. Early testers get first access.",
   },
 ];
 

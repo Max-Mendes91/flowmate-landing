@@ -9,6 +9,7 @@ const integrations = [
   { name: "Outlook", label: "Outlook", icon: HiOutlineMail, color: "#0078D4" },
   { name: "Google Calendar", label: "Google Calendar", icon: SiGooglecalendar, color: "#4285F4" },
   { name: "Telegram", label: "Telegram", icon: SiTelegram, color: "#26A5E4" },
+  { name: "WhatsApp", label: "WhatsApp", icon: SiWhatsapp, color: "#25D366" },
   { name: "Slack", label: "Slack (Coming Soon)", icon: SiSlack, color: "#4A154B" },
 ];
 
