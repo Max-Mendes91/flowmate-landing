@@ -49,7 +49,7 @@ const steps = [
     step: "03",
     title: "Summarize your inbox",
     description:
-      "Get a quick overview of email activity so you always know what&apos;s happening.",
+      "Get a quick overview of email activity so you always know what's happening.",
     icon: (
       <svg
         className="w-6 h-6"

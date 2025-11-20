@@ -21,7 +21,7 @@ const roadmapItems = [
   {
     phase: "Next",
     status: "Planned",
-    title: "Next",
+    title: "Coming Soon",
     features: [
       "Email template library",
       "Follow-up reminders",
