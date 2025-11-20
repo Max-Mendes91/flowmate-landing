@@ -12,11 +12,13 @@ const fadeUp = {
 export default function Hero() {
   const ref = useRef(null);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  // Reduced complexity for better TBT - only calculate on scroll
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
+  // Use will-change for GPU acceleration
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -30]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -20]);
@@ -25,19 +27,19 @@ export default function Hero() {
     <section ref={ref} className="relative pt-48 md:pt-56 pb-32 md:pb-48 overflow-hidden">
       {/* Parallax Gradient Layers */}
       <div className="absolute inset-0 -z-10">
-        {/* Layer 1: Blue accent */}
+        {/* Layer 1: Blue accent - GPU accelerated */}
         <motion.div
-          style={{ y: y1 }}
+          style={{ y: y1, willChange: "transform" }}
           className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-[rgba(77,159,255,0.25)] rounded-full blur-3xl"
         />
-        {/* Layer 2: Lavender accent */}
+        {/* Layer 2: Lavender accent - GPU accelerated */}
         <motion.div
-          style={{ y: y2 }}
+          style={{ y: y2, willChange: "transform" }}
           className="absolute top-40 right-1/4 w-[600px] h-[600px] bg-[rgba(179,156,255,0.20)] rounded-full blur-3xl"
         />
-        {/* Layer 3: Gold haze */}
+        {/* Layer 3: Gold haze - GPU accelerated */}
         <motion.div
-          style={{ y: y3 }}
+          style={{ y: y3, willChange: "transform" }}
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[rgba(228,207,163,0.10)] rounded-full blur-2xl"
         />
       </div>
@@ -50,7 +52,7 @@ export default function Hero() {
           transition={{ duration: 0.45 }}
           className="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight bg-gradient-to-r from-white via-gold/60 to-gold bg-clip-text text-transparent"
         >
-          Your AI assistant for email, meetings, and team communication
+          One AI assistant for your inbox, calendar, and client communication — available on desktop, Telegram, and WhatsApp
         </motion.h1>
 
         <motion.p
@@ -58,10 +60,19 @@ export default function Hero() {
           animate="visible"
           variants={fadeUp}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-text-secondary mb-8 max-w-2xl mx-auto"
         >
-          FlowMate connects your favorite tools — Gmail, Outlook, Calendar, Slack, WhatsApp,
-          and Telegram — so you can work faster with simple commands.
+          FlowMate helps freelancers and consultants manage email, meetings, and daily tasks without bouncing between apps. Work from your desktop SaaS dashboard, or handle everything directly inside Telegram and WhatsApp.
+        </motion.p>
+
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="text-sm text-text-muted mb-12 max-w-xl mx-auto"
+        >
+          FlowMate is in private beta. Limited early access.
         </motion.p>
 
         <motion.div
@@ -79,15 +90,15 @@ export default function Hero() {
             className="inline-flex items-center justify-center font-medium px-10 py-4 text-base bg-white/5 hover:bg-white/10 border border-gold-border hover:border-gold-hover text-white rounded-xl shadow-gold-glow transition-all duration-300"
             aria-label="Join the FlowMate waitlist"
           >
-            Join the waitlist
+            Join Early Access
           </motion.button>
           <motion.a
             href="#features"
             whileHover={{ scale: 1.02 }}
             className="inline-flex items-center justify-center font-medium px-10 py-4 text-base text-text-secondary border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300"
-            aria-label="Learn more about FlowMate features"
+            aria-label="See how FlowMate works"
           >
-            Learn more →
+            See how it works →
           </motion.a>
         </motion.div>
       </div>

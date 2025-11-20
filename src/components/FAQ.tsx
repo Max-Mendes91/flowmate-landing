@@ -6,34 +6,44 @@ import ContactModal from "./ContactModal";
 
 const faqs = [
   {
-    question: "How does FlowMate access my Gmail, Outlook, and Slack?",
+    question: "What is FlowMate?",
     answer:
-      "FlowMate uses official OAuth integrations with Gmail, Outlook, Google Calendar, and Slack. You grant permissions once, and we only access what's needed to perform actions you explicitly request. Your credentials are never stored—everything is encrypted in transit.",
+      "FlowMate is an AI assistant available as a desktop SaaS app and inside messaging apps like Telegram and WhatsApp. It helps you manage email, scheduling, and client communication without switching apps.",
   },
   {
-    question: "Is my data secure and private?",
+    question: "Does FlowMate work on both desktop and messaging apps?",
     answer:
-      "Absolutely. FlowMate is SOC 2 compliant and uses end-to-end encryption. We never train AI models on your data, sell information to third parties, or access your messages without explicit action requests. You can revoke access anytime.",
+      "Yes. FlowMate is available as a desktop SaaS app and works inside Telegram and WhatsApp. You get the same AI assistant across all platforms.",
   },
   {
-    question: "What happens if FlowMate misunderstands my request?",
+    question: "Is FlowMate free during beta?",
     answer:
-      "FlowMate always shows a confirmation preview before executing any action. You'll see exactly what will be sent, scheduled, or posted—and you can edit or cancel before confirming. We're constantly improving accuracy based on user feedback.",
+      "Yes. Beta testers use FlowMate for free and get exclusive perks when we launch publicly.",
   },
   {
-    question: "Does FlowMate work on mobile?",
+    question: "What email providers do you support?",
     answer:
-      "Yes! Our private beta launch includes WhatsApp and Telegram integrations, letting you use FlowMate as your personal AI assistant directly from your mobile device. Make appointments, send emails, check unread messages, and more—all through natural conversation with our AI chatbot on Telegram or WhatsApp. Native iOS and Android apps are planned for Q2 2026.",
+      "Gmail and Outlook. More coming soon based on user requests.",
   },
   {
-    question: "How much does FlowMate cost?",
+    question: "Is my data secure?",
     answer:
-      "We're currently in private beta. Early waitlist members will get free access during beta and special pricing when we launch. Pricing tiers will be announced closer to public release.",
+      "Absolutely. FlowMate only accesses what you authorize, and we follow industry-standard security practices.",
   },
   {
-    question: "Can FlowMate integrate with other tools?",
+    question: "How do I join early access?",
     answer:
-      "Currently, FlowMate supports Gmail, Outlook, Google Calendar, Slack, WhatsApp, and Telegram. Our private beta includes full WhatsApp and Telegram integration, giving you a personal AI assistant on your mobile device. We're building integrations for Microsoft Teams, Zoom, Notion, and more based on user demand. Vote for your favorite integrations in our beta community.",
+      "Join the waitlist and we&apos;ll send you an invite when your spot opens. Early testers get priority access and lifetime discounts.",
+  },
+  {
+    question: "Can I suggest features?",
+    answer:
+      "Yes! Early testers help shape the roadmap. We actively collect feedback and vote on what to build next.",
+  },
+  {
+    question: "When will FlowMate launch publicly?",
+    answer:
+      "We&apos;re aiming for mid-2026. Early testers get first access.",
   },
 ];
 
@@ -58,7 +68,7 @@ export default function FAQ() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gold/70 to-gold bg-clip-text text-transparent">
-              Frequently Asked Questions
+              Questions? We&apos;ve got answers.
             </h2>
             <p className="text-lg md:text-xl text-text-secondary">
               Everything you need to know about FlowMate.

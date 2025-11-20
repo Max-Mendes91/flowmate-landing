@@ -19,31 +19,24 @@ export default function CTA() {
             className="rounded-3xl border border-white/12 bg-[rgba(17,17,19,0.60)] backdrop-blur-sm p-12 md:p-16 text-center"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-5 text-text-primary">
-              Be the first to try FlowMate
+              Be one of the first to use FlowMate
             </h2>
-            <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
-              Launching soon — join the waitlist to get early access.
+            <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+              Test FlowMate on desktop, Telegram, and WhatsApp — before public launch.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <motion.button
-                type="button"
-                onClick={() => setIsWaitlistOpen(true)}
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center font-medium px-10 py-4 text-base bg-white/5 hover:bg-white/10 border border-gold-border hover:border-gold-hover text-white rounded-xl shadow-gold-glow transition-all duration-300"
-                aria-label="Join the FlowMate waitlist"
-              >
-                Join the waitlist
-              </motion.button>
-              <motion.a
-                href="#features"
-                whileHover={{ scale: 1.02 }}
-                className="inline-flex items-center justify-center font-medium px-10 py-4 text-base text-text-secondary border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300"
-                aria-label="Learn more about FlowMate"
-              >
-                Learn more
-              </motion.a>
-            </div>
+            <motion.button
+              type="button"
+              onClick={() => setIsWaitlistOpen(true)}
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center font-medium px-10 py-4 text-base bg-white/5 hover:bg-white/10 border border-gold-border hover:border-gold-hover text-white rounded-xl shadow-gold-glow transition-all duration-300 mb-4"
+              aria-label="Join the FlowMate waitlist"
+            >
+              Join Early Access
+            </motion.button>
+            <p className="text-sm text-text-muted">
+              Limited early access spots. No credit card required.
+            </p>
           </motion.div>
         </div>
       </section>

@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-sm text-text-muted">
-              © {new Date().getFullYear()} FlowMate. All rights reserved.
+              © {new Date().getFullYear()} FlowMate. Currently in private beta.
             </p>
             <div className="flex gap-8">
               <Link

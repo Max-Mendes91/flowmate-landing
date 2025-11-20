@@ -4,39 +4,43 @@ import { motion } from "framer-motion";
 
 const roadmapItems = [
   {
-    phase: "Q1 2026",
+    phase: "Now",
     status: "In Progress",
-    title: "Private Beta Launch",
+    title: "Private Beta",
     features: [
-      "Gmail & Outlook email automation",
-      "Google Calendar scheduling",
-      "Basic Slack integration",
+      "Telegram bot for email drafting",
+      "Gmail and Outlook integration",
+      "Google and Outlook calendar sync",
+      "Email summaries",
+      "Meeting scheduling",
     ],
     badge: "Current",
     badgeColor: "gold",
   },
   {
-    phase: "Q2 2026",
+    phase: "Next",
     status: "Planned",
-    title: "Public Beta & Integrations",
+    title: "Next",
     features: [
-      "Microsoft Teams support",
-      "Advanced Slack workflows",
-      "Email templates & personalization",
-      "Mobile app (iOS & Android)",
+      "Slack integration",
+      "Email template library",
+      "Follow-up reminders",
+      "Multi-language support",
+      "Advanced scheduling (time zone detection, recurring meetings)",
     ],
     badge: "Next",
     badgeColor: "blue",
   },
   {
-    phase: "Q3 2026",
+    phase: "Later",
     status: "Planned",
-    title: "AI Enhancements & Scale",
+    title: "Later",
     features: [
-      "Multi-language support",
-      "Custom AI training on your style",
-      "Analytics & insights dashboard",
+      "CRM integrations",
+      "Voice commands",
+      "Mobile app companion",
       "Team collaboration features",
+      "Custom workflows",
     ],
     badge: "Future",
     badgeColor: "lavender",
@@ -56,10 +60,10 @@ export default function Roadmap() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gold/70 to-gold bg-clip-text text-transparent">
-            Product Roadmap
+            What we&apos;re building next
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            Our vision for making FlowMate the most powerful productivity AI.
+            FlowMate evolves based on real user needs across all platforms.
           </p>
         </motion.div>
 
@@ -163,6 +167,17 @@ export default function Roadmap() {
               </motion.div>
             ))}
           </div>
+
+          {/* Note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-center text-text-muted text-sm mt-12"
+          >
+            Roadmap is shaped by early tester feedback. Features are built with cross-platform support in mind — desktop, Telegram, and WhatsApp.
+          </motion.p>
         </div>
       </div>
     </section>

@@ -8,50 +8,17 @@ const integrations = [
   { name: "Gmail", label: "Gmail", icon: SiGmail, color: "#EA4335" },
   { name: "Outlook", label: "Outlook", icon: HiOutlineMail, color: "#0078D4" },
   { name: "Google Calendar", label: "Google Calendar", icon: SiGooglecalendar, color: "#4285F4" },
-  { name: "Slack", label: "Slack", icon: SiSlack, color: "#4A154B" },
-  { name: "WhatsApp", label: "WhatsApp", icon: SiWhatsapp, color: "#25D366" },
   { name: "Telegram", label: "Telegram", icon: SiTelegram, color: "#26A5E4" },
-];
-
-const stats = [
-  { value: "6", label: "Integrations" },
-  { value: "5s", label: "Avg. task time" },
+  { name: "Slack", label: "Slack (Coming Soon)", icon: SiSlack, color: "#4A154B" },
 ];
 
 export default function CredibilityAnchors() {
-  // Duplicate integrations for seamless loop
-  const duplicatedIntegrations = [...integrations, ...integrations];
+  // Quadruple integrations for seamless loop without gaps
+  const duplicatedIntegrations = [...integrations, ...integrations, ...integrations, ...integrations];
 
   return (
     <section className="py-16 md:py-24 relative border-t border-white/5">
       <div className="container mx-auto px-4">
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 gap-8 md:gap-12 max-w-2xl mx-auto mb-16"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-gold/70 to-gold bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-xs md:text-sm text-text-muted">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Integrations */}
         <div className="text-center mb-8">
           <motion.p
@@ -61,7 +28,7 @@ export default function CredibilityAnchors() {
             transition={{ duration: 0.5 }}
             className="text-sm text-text-muted uppercase tracking-wider"
           >
-            Works seamlessly with
+            Connects to Gmail, Outlook, Google Calendar, and Slack · Works on desktop, Telegram, and WhatsApp
           </motion.p>
         </div>
 

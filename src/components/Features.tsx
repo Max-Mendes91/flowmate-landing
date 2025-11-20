@@ -5,8 +5,8 @@ import { useRef, useState } from "react";
 
 const features = [
   {
-    title: "Send emails with one sentence",
-    desc: "Draft and send emails through Gmail or Outlook using your tone.",
+    title: "Gmail + Outlook",
+    desc: "Connect once. Works everywhere.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -26,8 +26,8 @@ const features = [
     ),
   },
   {
-    title: "Schedule meetings instantly",
-    desc: "Understand dates, times, and availability across time zones.",
+    title: "Calendar sync",
+    desc: "Book meetings from any platform.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -47,8 +47,8 @@ const features = [
     ),
   },
   {
-    title: "Automate task management",
-    desc: "Create, update, and track tasks automatically across your workflow.",
+    title: "AI drafting",
+    desc: "Say what you need. FlowMate writes it.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -56,20 +56,41 @@ const features = [
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
-        aria-label="Task icon"
+        aria-label="Edit icon"
         role="img"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
         />
       </svg>
     ),
   },
   {
-    title: "Post updates to Slack",
-    desc: "Notify channels and trigger workflows without opening Slack.",
+    title: "Inbox summaries",
+    desc: "Quick overview without opening email.",
+    icon: (
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        aria-label="Inbox icon"
+        role="img"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Natural commands",
+    desc: "Talk naturally. No learning curve.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -89,8 +110,8 @@ const features = [
     ),
   },
   {
-    title: "AI assistant on WhatsApp",
-    desc: "Make appointments, send emails, and manage tasks via WhatsApp.",
+    title: "Secure & private",
+    desc: "You control what FlowMate accesses.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -98,34 +119,13 @@ const features = [
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
-        aria-label="WhatsApp icon"
+        aria-label="Security icon"
         role="img"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "AI assistant on Telegram",
-    desc: "Schedule meetings, check inbox, and automate tasks via Telegram.",
-    icon: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-        aria-label="Telegram icon"
-        role="img"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
         />
       </svg>
     ),
@@ -258,10 +258,20 @@ export default function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.45 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-20 text-text-primary"
+          className="text-4xl md:text-5xl font-bold text-center mb-6 text-text-primary"
         >
-          Core Features
+          Built for freelancers who move between desktop and messaging apps
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="text-lg md:text-xl text-text-secondary text-center mb-20 max-w-3xl mx-auto"
+        >
+          FlowMate keeps your communication and workflow in sync — wherever you&apos;re working.
+        </motion.p>
 
         {/* Circular orbital layout for desktop, stack for mobile */}
         <div className="relative max-w-7xl mx-auto">
@@ -337,9 +347,10 @@ export default function Features() {
                 />
               </motion.div>
 
-              {/* Orbital cards - rotating container */}
+              {/* Orbital cards - rotating container - GPU accelerated */}
               <motion.div
                 className="absolute inset-0"
+                style={{ willChange: "transform" }}
                 animate={{
                   rotate: 360,
                 }}
@@ -382,8 +393,9 @@ export default function Features() {
                         stiffness: 80,
                       }}
                     >
-                      {/* Counter-rotation to keep cards upright */}
+                      {/* Counter-rotation to keep cards upright - GPU accelerated */}
                       <motion.div
+                        style={{ willChange: "transform" }}
                         animate={{
                           rotate: -360,
                         }}
@@ -393,8 +405,9 @@ export default function Features() {
                           ease: "linear",
                         }}
                       >
-                        {/* Floating animation */}
+                        {/* Floating animation - GPU accelerated */}
                         <motion.div
+                          style={{ willChange: "transform" }}
                           animate={{
                             y: [0, -10, 0],
                           }}

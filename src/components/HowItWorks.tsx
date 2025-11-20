@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const steps = [
   {
     step: "01",
-    title: "Type your request in natural language",
+    title: "Draft and send emails",
     description:
-      "No syntax, no commands. Just say what you want—via web, Chrome extension, WhatsApp, or Telegram: 'Email the team about tomorrow's standup at 10am and add it to my calendar.' Use our AI assistant on your mobile through Telegram or WhatsApp for seamless on-the-go productivity.",
+      "Tell FlowMate what you want to say. It drafts a polished email and sends it through Gmail or Outlook.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -19,16 +19,16 @@ const steps = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
         />
       </svg>
     ),
   },
   {
     step: "02",
-    title: "FlowMate understands and confirms",
+    title: "Schedule meetings instantly",
     description:
-      "AI parses your intent, extracts details (recipients, time, subject), and shows you a quick preview before taking action.",
+      "FlowMate finds availability, creates calendar events, and sends invites — without opening your calendar.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -40,16 +40,16 @@ const steps = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
         />
       </svg>
     ),
   },
   {
     step: "03",
-    title: "Actions execute across all apps",
+    title: "Summarize your inbox",
     description:
-      "FlowMate sends the email via Gmail, creates the calendar event in Google Calendar, and posts a Slack reminder—simultaneously.",
+      "Get a quick overview of email activity so you always know what&apos;s happening.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -61,7 +61,7 @@ const steps = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M13 10V3L4 14h7v7l9-11h-7z"
+          d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
         />
       </svg>
     ),
@@ -81,10 +81,10 @@ export default function HowItWorks() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gold/70 to-gold bg-clip-text text-transparent">
-            How FlowMate works
+            Three commands. Zero context switching.
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            Three steps to automate your entire workflow.
+            Use FlowMate from your desktop dashboard, Telegram, or WhatsApp — same assistant, same capabilities.
           </p>
         </motion.div>
 

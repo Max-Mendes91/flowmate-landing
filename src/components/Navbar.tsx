@@ -38,8 +38,8 @@ export default function Navbar() {
       <a href="#roadmap" className="text-sm text-white/90 hover:text-gold transition-colors">
         Roadmap
       </a>
-      <a href="#pricing" className="text-sm text-white/90 hover:text-gold transition-colors">
-        Pricing
+      <a href="#waitlist" className="text-sm text-white/90 hover:text-gold transition-colors">
+        Join Waitlist
       </a>
       <a href="#faq" className="text-sm text-white/90 hover:text-gold transition-colors">
         FAQ
