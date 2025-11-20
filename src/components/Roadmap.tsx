@@ -11,6 +11,7 @@ const roadmapItems = [
       "Telegram bot for email drafting",
       "Gmail and Outlook integration",
       "Google and Outlook calendar sync",
+      "Slack integration",
       "Email summaries",
       "Meeting scheduling",
     ],
@@ -22,7 +23,6 @@ const roadmapItems = [
     status: "Planned",
     title: "Next",
     features: [
-      "Slack integration",
       "Email template library",
       "Follow-up reminders",
       "Multi-language support",
@@ -176,7 +176,8 @@ export default function Roadmap() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-center text-text-muted text-sm mt-12"
           >
-            Roadmap is shaped by early tester feedback. Features are built with cross-platform support in mind — desktop, Telegram, and WhatsApp.
+            Roadmap is shaped by early tester feedback. Features are built with
+            cross-platform support in mind — desktop, Telegram, and WhatsApp.
           </motion.p>
         </div>
       </div>
