@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import CredibilityAnchors from "@/components/CredibilityAnchors";
 import SectionDivider from "@/components/SectionDivider";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Dynamic imports with loading placeholders to prevent layout shift
 // Lazy load below-the-fold components to reduce initial TBT
@@ -43,6 +44,7 @@ export default function Home() {
       <SectionDivider />
       <CTA />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }
