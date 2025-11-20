@@ -12,7 +12,6 @@
 export async function sendWaitlistEmail(email: string): Promise<boolean> {
   // Email service integration placeholder
   // The actual implementation depends on the chosen email provider
-  // For now, we log the signup and rely on Supabase for data storage
-  console.log(`Waitlist signup recorded: ${email}`);
+  // Waitlist signup is handled by MailerLite API
   return true;
 }

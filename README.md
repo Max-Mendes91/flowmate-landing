@@ -31,6 +31,7 @@ One AI assistant for your inbox, calendar, and client communication — availabl
 ## 🌐 Multi-Platform Availability
 
 FlowMate works seamlessly across:
+
 - **Desktop SaaS App** - Full-featured dashboard for comprehensive workflow management
 - **Telegram** - Manage everything directly inside Telegram
 - **WhatsApp** - Access FlowMate without leaving WhatsApp
@@ -56,12 +57,12 @@ Same AI assistant, same capabilities, wherever you're working.
 
 ## 📅 Roadmap
 
-| Quarter | Planned Features |
-|---|---|
-| **Q1 2025** | Private Beta (Desktop, Telegram, WhatsApp - Gmail, Outlook, Google Calendar) |
-| **Q2 2025** | Advanced AI Features, Slack Integration, Email Templates & Tone Customization |
-| **Q3 2025** | Public Beta, Microsoft Teams, Multi-language Support |
-| **Q4 2025+** | Mobile Apps (iOS & Android), Custom AI Training, Team Collaboration Features |
+| Quarter      | Planned Features                                                              |
+| ------------ | ----------------------------------------------------------------------------- |
+| **Q1 2025**  | Private Beta (Desktop, Telegram, WhatsApp - Gmail, Outlook, Google Calendar)  |
+| **Q2 2026**  | Advanced AI Features, Slack Integration, Email Templates & Tone Customization |
+| **Q3 2026**  | Public Beta, Microsoft Teams, Multi-language Support                          |
+| **Q4 2026+** | Mobile Apps (iOS & Android), Custom AI Training, Team Collaboration Features  |
 
 ---
 
@@ -83,6 +84,7 @@ Early testers shape the product. You influence what we build next — across des
 **FlowMate is free during beta.**
 
 Beta testers use FlowMate for free and get exclusive perks when we launch publicly, including:
+
 - Priority access to the public launch
 - Lifetime discount pricing
 - Feature voting rights
@@ -142,6 +144,7 @@ A: We're aiming for mid-2026. Early testers get first access.
 FlowMate keeps your communication and workflow in sync — wherever you're working.
 
 Perfect for:
+
 - Freelancers managing multiple clients
 - Consultants coordinating schedules and communication
 - Solo entrepreneurs handling email, meetings, and tasks

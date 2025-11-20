@@ -38,8 +38,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setShowCopied(true);
       // Hide after 2 seconds
       setTimeout(() => setShowCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
+    } catch {
+      // Silently handle clipboard errors
     }
   };
 
