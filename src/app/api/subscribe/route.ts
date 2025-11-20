@@ -5,12 +5,23 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: NextRequest) {
   try {
-    // Check for MailerLite API key
+    // Check for MailerLite API key and group ID
     const apiKey = process.env.MAILERLITE_API_KEY;
+    const groupId = process.env.MAILERLITE_WAITLIST_GROUP_ID;
 
     if (!apiKey) {
       console.error(
         "Missing MAILERLITE_API_KEY environment variable. Please ensure MAILERLITE_API_KEY is set in your .env.local file."
+      );
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    if (!groupId) {
+      console.error(
+        "Missing MAILERLITE_WAITLIST_GROUP_ID environment variable. Please ensure MAILERLITE_WAITLIST_GROUP_ID is set in your .env.local file."
       );
       return NextResponse.json(
         { error: "Server configuration error" },
@@ -39,9 +50,11 @@ export async function POST(request: NextRequest) {
     // Prepare subscriber data for MailerLite
     const subscriberData: {
       email: string;
+      groups?: string[];
       fields?: Record<string, string>;
     } = {
       email: email.toLowerCase().trim(),
+      groups: [groupId], // Add subscriber to Waitlist group
     };
 
     // Add custom fields if available
