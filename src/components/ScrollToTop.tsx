@@ -1,13 +1,19 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const isScrollingToTop = useRef(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
+      // Don't update visibility if we're scrolling to top
+      if (isScrollingToTop.current) {
+        return;
+      }
+
       // Show button when page is scrolled down 400px
       if (window.scrollY > 400) {
         setIsVisible(true);
@@ -18,14 +24,26 @@ export default function ScrollToTop() {
 
     window.addEventListener("scroll", toggleVisibility);
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {
+    // Immediately hide the button when clicked
+    setIsVisible(false);
+    isScrollingToTop.current = true;
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+
+    // Re-enable visibility checks after scroll completes
+    // Smooth scroll typically takes ~500-1000ms depending on distance
+    setTimeout(() => {
+      isScrollingToTop.current = false;
+    }, 1000);
   };
 
   return (
