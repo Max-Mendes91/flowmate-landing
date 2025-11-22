@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,24 +27,24 @@ export default function Navbar() {
       `}
     >
       {/* Navigation links */}
-      <a
-        href="#how-it-works"
+      <Link
+        href="/how-it-works"
         className="text-sm text-white/90 hover:text-gold transition-colors"
       >
         How It Works
-      </a>
-      <a href="#features" className="text-sm text-white/90 hover:text-gold transition-colors">
+      </Link>
+      <Link href="/features" className="text-sm text-white/90 hover:text-gold transition-colors">
         Features
-      </a>
-      <a href="#roadmap" className="text-sm text-white/90 hover:text-gold transition-colors">
+      </Link>
+      <Link href="/roadmap" className="text-sm text-white/90 hover:text-gold transition-colors">
         Roadmap
-      </a>
-      <a href="#faq" className="text-sm text-white/90 hover:text-gold transition-colors">
+      </Link>
+      <Link href="/faq" className="text-sm text-white/90 hover:text-gold transition-colors">
         FAQ
-      </a>
-      <a href="#waitlist" className="text-sm text-white/90 hover:text-gold transition-colors">
+      </Link>
+      <Link href="/#waitlist" className="text-sm text-white/90 hover:text-gold transition-colors">
         Join Waitlist
-      </a>
+      </Link>
     </nav>
   );
 }

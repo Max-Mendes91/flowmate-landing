@@ -93,7 +93,7 @@ export default function Hero() {
             Join Early Access
           </motion.button>
           <motion.a
-            href="#features"
+            href="/features"
             whileHover={{ scale: 1.02 }}
             className="inline-flex items-center justify-center font-medium px-10 py-4 text-base text-text-secondary border border-white/20 hover:border-white/40 rounded-xl transition-all duration-300"
             aria-label="See how FlowMate works"
