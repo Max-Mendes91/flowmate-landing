@@ -34,13 +34,18 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center z-10">
+        <Link
+          href="/"
+          className="flex items-center z-10 group relative cursor-pointer"
+          aria-label="FlowMate - Go to homepage"
+          title="Go to homepage"
+        >
           <Image
             src="/logo-symbol.png"
             width={42}
             height={42}
             alt="FlowMate Logo"
-            className="rounded-full shadow"
+            className="rounded-full shadow transition-all duration-300 group-hover:scale-110 group-hover:shadow-gold-glow"
             priority
           />
         </Link>
