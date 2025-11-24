@@ -23,6 +23,7 @@ const roadmapItems = [
     status: "Planned",
     title: "Coming Soon",
     features: [
+      "WhatsApp integration",
       "Email template library",
       "Follow-up reminders",
       "Multi-language support",

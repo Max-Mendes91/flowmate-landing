@@ -25,8 +25,8 @@ const benefits = [
     ),
   },
   {
-    title: "Lifetime discount",
-    description: "Lock in a special rate that early supporters keep forever.",
+    title: "Exclusive early access + priority feature voting",
+    description: "Be among the first to test new features and have a direct say in what gets built next.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -102,7 +102,7 @@ export default function EarlyAccessBenefits() {
               Why join early access?
             </h2>
             <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-              Early testers shape the product. You influence what we build next — across desktop, Telegram, and WhatsApp.
+              Early testers shape the product. You influence what we build next — across desktop and Telegram.
             </p>
           </motion.div>
 

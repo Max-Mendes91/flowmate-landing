@@ -22,7 +22,7 @@ export default function CTA() {
               Be one of the first to use FlowMate
             </h2>
             <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-              Test FlowMate on desktop, Telegram, and WhatsApp — before public launch.
+              Test FlowMate on desktop and Telegram — before public launch.
             </p>
             <motion.button
               type="button"

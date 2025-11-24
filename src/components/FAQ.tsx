@@ -8,12 +8,12 @@ const faqs = [
   {
     question: "What is FlowMate?",
     answer:
-      "FlowMate is an AI assistant available as a desktop SaaS app and inside messaging apps like Telegram and WhatsApp. It helps you manage email, scheduling, and client communication without switching apps.",
+      "FlowMate is an AI assistant available as a desktop SaaS app and inside Telegram. It helps you manage email, scheduling, and client communication without switching apps.",
   },
   {
     question: "Does FlowMate work on both desktop and messaging apps?",
     answer:
-      "Yes. FlowMate is available as a desktop SaaS app and works inside Telegram and WhatsApp. You get the same AI assistant across all platforms.",
+      "Yes. FlowMate is available as a desktop SaaS app and works inside Telegram. You get the same AI assistant across all platforms.",
   },
   {
     question: "Is FlowMate free during beta?",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "How do I join early access?",
     answer:
-      "Join the waitlist and we'll send you an invite when your spot opens. Early testers get priority access and lifetime discounts.",
+      "Join the waitlist and we'll send you an invite when your spot opens. Early testers get exclusive access and priority feature voting.",
   },
   {
     question: "Can I suggest features?",

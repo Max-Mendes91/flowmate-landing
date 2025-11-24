@@ -84,7 +84,7 @@ export default function HowItWorks() {
             Three commands. Zero context switching.
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            Use FlowMate from your desktop dashboard, Telegram, or WhatsApp — same assistant, same capabilities.
+            Use FlowMate from your desktop dashboard or Telegram — same assistant, same capabilities.
           </p>
         </motion.div>
 

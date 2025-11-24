@@ -46,7 +46,7 @@ export default function TelegramDemo() {
             See FlowMate in action
           </h2>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-            Every task shown here works the same on desktop, Telegram, and WhatsApp.
+            Every task shown here works the same on desktop and Telegram.
           </p>
         </motion.div>
 

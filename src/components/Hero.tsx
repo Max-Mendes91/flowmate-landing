@@ -52,7 +52,7 @@ export default function Hero() {
           transition={{ duration: 0.45 }}
           className="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight bg-gradient-to-r from-white via-gold/60 to-gold bg-clip-text text-transparent"
         >
-          One AI assistant for your inbox, calendar, and client communication — available on desktop, Telegram, and WhatsApp
+          One AI assistant for your inbox, calendar, and client communication — available on desktop and Telegram
         </motion.h1>
 
         <motion.p
@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{ duration: 0.45, delay: 0.1 }}
           className="text-lg md:text-xl text-text-secondary mb-8 max-w-2xl mx-auto"
         >
-          FlowMate helps freelancers and consultants manage email, meetings, and daily tasks without bouncing between apps. Work from your desktop SaaS dashboard, or handle everything directly inside Telegram and WhatsApp.
+          FlowMate helps freelancers and consultants manage email, meetings, and daily tasks without bouncing between apps. Work from your desktop SaaS dashboard, or handle everything directly inside Telegram.
         </motion.p>
 
         <motion.p

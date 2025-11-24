@@ -27,8 +27,8 @@ Perfect for deep work and daily management.`,
     ),
   },
   {
-    title: "FlowMate in Messaging Apps (Telegram + WhatsApp)",
-    description: "Handle your day without leaving the conversation. Draft emails, book meetings, get inbox summaries, send follow-ups, and automate tasks — all inside Telegram or WhatsApp.\n\nFlowMate meets you where your clients already are.",
+    title: "FlowMate in Messaging Apps (Telegram)",
+    description: "Handle your day without leaving the conversation. Draft emails, book meetings, get inbox summaries, send follow-ups, and automate tasks — all inside Telegram.\n\nFlowMate meets you where your clients already are.",
     icon: (
       <svg
         className="w-6 h-6"
@@ -66,7 +66,7 @@ export default function TwoWaysToUse() {
               One AI assistant — two powerful ways to use it
             </h2>
             <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-              Use FlowMate on desktop for full control, or run everything from Telegram and WhatsApp when you&apos;re on the move.
+              Use FlowMate on desktop for full control, or run everything from Telegram when you&apos;re on the move.
             </p>
           </motion.div>
 

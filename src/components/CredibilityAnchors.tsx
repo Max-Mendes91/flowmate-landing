@@ -46,7 +46,7 @@ export default function CredibilityAnchors() {
             className="text-sm text-text-muted uppercase tracking-wider"
           >
             Connects to Gmail, Outlook, Google Calendar, and Slack · Works on
-            desktop, Telegram, and WhatsApp
+            desktop and Telegram
           </motion.p>
         </div>
 
